@@ -1,4 +1,4 @@
-package org.ogameoptimizer.gui.bloc;
+package org.ogameoptimizer.gui.panel;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -15,11 +15,11 @@ import javax.swing.JTextField;
 import org.ogameoptimizer.ogame.resource.Resource;
 
 @SuppressWarnings("serial")
-public class ResourceDisplay extends JPanel {
+public class ResourceComponent extends JPanel {
 	private final JLabel name;
 	private final JTextField value;
 
-	public ResourceDisplay(final Resource resource) {
+	public ResourceComponent(final Resource resource) {
 		GridBagLayout layout = new GridBagLayout();
 		setLayout(layout);
 

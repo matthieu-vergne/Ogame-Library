@@ -7,7 +7,7 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
-import org.ogameoptimizer.gui.bloc.UserPanel;
+import org.ogameoptimizer.gui.panel.UserPanel;
 import org.ogameoptimizer.ogame.Planet;
 import org.ogameoptimizer.ogame.User;
 import org.ogameoptimizer.ogame.building.resources.CrystalMine;

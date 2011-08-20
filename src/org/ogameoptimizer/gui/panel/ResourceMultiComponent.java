@@ -1,4 +1,4 @@
-package org.ogameoptimizer.gui.bloc;
+package org.ogameoptimizer.gui.panel;
 
 import java.awt.FlowLayout;
 
@@ -8,15 +8,15 @@ import org.ogameoptimizer.ogame.Planet;
 import org.ogameoptimizer.ogame.resource.Resource;
 
 @SuppressWarnings("serial")
-public class AllResourceDisplay extends JPanel {
+public class ResourceMultiComponent extends JPanel {
 
-	public AllResourceDisplay(Planet planet) {
+	public ResourceMultiComponent(Planet planet) {
 		setLayout(new FlowLayout());
 
 		for (final Resource resource : new Resource[] { planet.getMetal(),
 				planet.getCrystal(), planet.getDeuterium(),
 				planet.getAntimatter(), planet.getEnergy() }) {
-			add(new ResourceDisplay(resource));
+			add(new ResourceComponent(resource));
 		}
 
 	}

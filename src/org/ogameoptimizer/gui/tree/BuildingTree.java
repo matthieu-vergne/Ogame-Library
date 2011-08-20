@@ -1,4 +1,4 @@
-package org.ogameoptimizer.gui.bloc;
+package org.ogameoptimizer.gui.tree;
 
 import java.util.ArrayList;
 import java.util.Collection;

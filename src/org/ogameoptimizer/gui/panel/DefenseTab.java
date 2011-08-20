@@ -1,4 +1,4 @@
-package org.ogameoptimizer.gui.bloc;
+package org.ogameoptimizer.gui.panel;
 
 import java.awt.FlowLayout;
 

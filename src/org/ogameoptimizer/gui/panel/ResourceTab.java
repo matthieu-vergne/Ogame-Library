@@ -1,10 +1,11 @@
-package org.ogameoptimizer.gui.bloc;
+package org.ogameoptimizer.gui.panel;
 
 import java.awt.GridLayout;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.ogameoptimizer.gui.tree.BuildingTree;
 import org.ogameoptimizer.ogame.Planet;
 import org.ogameoptimizer.ogame.building.Building;
 import org.ogameoptimizer.ogame.resource.IProducer;

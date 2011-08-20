@@ -1,4 +1,4 @@
-package org.ogameoptimizer.gui.bloc;
+package org.ogameoptimizer.gui.panel;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -17,7 +17,7 @@ public class PlanetTab extends JPanel {
 			GridBagConstraints constraint = new GridBagConstraints();
 			constraint.gridx = 0;
 			constraint.gridy = 0;
-			add(new AllResourceDisplay(planet), constraint);
+			add(new ResourceMultiComponent(planet), constraint);
 		}
 
 		{
