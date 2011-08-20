@@ -1,8 +1,11 @@
 package org.ogameoptimizer.ogame.building;
 
+import java.io.Serializable;
+
 import org.ogameoptimizer.ogame.Planet;
 
-public abstract class Building {
+public abstract class Building implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private Integer level = 1;
 	private Planet planet = null;
 

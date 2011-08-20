@@ -1,5 +1,6 @@
 package org.ogameoptimizer.ogame;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -13,7 +14,8 @@ import org.ogameoptimizer.ogame.resource.IProducer;
 import org.ogameoptimizer.ogame.resource.Metal;
 import org.ogameoptimizer.ogame.resource.NaturalProducer;
 
-public class Planet {
+public class Planet implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private final Long diameter;
 	private final Integer temperatureMin;
 	private final Integer temperatureMax;

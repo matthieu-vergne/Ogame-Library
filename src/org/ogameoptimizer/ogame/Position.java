@@ -1,7 +1,10 @@
 package org.ogameoptimizer.ogame;
 
-public class Position {
+import java.io.Serializable;
 
+public class Position implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private final Integer galaxy;
 	private final Integer system;
 	private final Integer rank;

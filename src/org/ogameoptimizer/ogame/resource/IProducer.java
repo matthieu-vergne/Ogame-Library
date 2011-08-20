@@ -1,6 +1,8 @@
 package org.ogameoptimizer.ogame.resource;
 
-public interface IProducer {
+import java.io.Serializable;
+
+public interface IProducer extends Serializable {
 
 	public Double getMaximumProductionRate();
 	public void setMaximumProductionRate(Double rate);
