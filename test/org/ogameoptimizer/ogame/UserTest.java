@@ -1,6 +1,9 @@
 package org.ogameoptimizer.ogame;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,9 +15,6 @@ import java.util.Arrays;
 
 import org.junit.Test;
 import org.ogameoptimizer.ogame.building.Building;
-import org.ogameoptimizer.ogame.building.resources.CrystalMine;
-import org.ogameoptimizer.ogame.building.resources.DeuteriumMine;
-import org.ogameoptimizer.ogame.building.resources.MetalMine;
 
 public class UserTest {
 
@@ -73,8 +73,9 @@ public class UserTest {
 			planet.setPosition(new Position(3, 45, 7));
 			planet.setTemperatureMax(40);
 			planet.setTemperatureMin(-10);
-			planet.constructBuilding(new MetalMine());
-			planet.constructBuilding(new CrystalMine());
+			planet.getBuildings().metalMine.setLevel(5);
+			planet.getBuildings().crystalMine.setLevel(5);
+			planet.getBuildings().solarCentral.setLevel(5);
 			planet.getMetal().setActualAmount(100L);
 			planet.getCrystal().setActualAmount(200L);
 			planet.getDeuterium().setActualAmount(300L);
@@ -90,9 +91,10 @@ public class UserTest {
 			planet.setPosition(new Position(2, 54, 1));
 			planet.setTemperatureMax(20);
 			planet.setTemperatureMin(-20);
-			planet.constructBuilding(new MetalMine());
-			planet.constructBuilding(new CrystalMine());
-			planet.constructBuilding(new DeuteriumMine());
+			planet.getBuildings().metalMine.setLevel(5);
+			planet.getBuildings().crystalMine.setLevel(4);
+			planet.getBuildings().deuteriumMine.setLevel(3);
+			planet.getBuildings().solarCentral.setLevel(6);
 			planet.getMetal().setActualAmount(100L);
 			planet.getCrystal().setActualAmount(200L);
 			planet.getDeuterium().setActualAmount(300L);

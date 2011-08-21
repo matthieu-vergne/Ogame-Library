@@ -14,8 +14,6 @@ import java.io.ObjectOutputStream;
 
 import org.junit.Test;
 import org.ogameoptimizer.ogame.building.Building;
-import org.ogameoptimizer.ogame.building.resources.CrystalMine;
-import org.ogameoptimizer.ogame.building.resources.MetalMine;
 
 public class PlanetTest {
 
@@ -64,8 +62,9 @@ public class PlanetTest {
 		planet.setPosition(new Position(2, 54, 1));
 		planet.setTemperatureMax(20);
 		planet.setTemperatureMin(-20);
-		planet.constructBuilding(new MetalMine());
-		planet.constructBuilding(new CrystalMine());
+		planet.getBuildings().metalMine.setLevel(5);
+		planet.getBuildings().crystalMine.setLevel(4);
+		planet.getBuildings().solarCentral.setLevel(4);
 		planet.getMetal().setActualAmount(100L);
 		planet.getCrystal().setActualAmount(200L);
 		planet.getDeuterium().setActualAmount(300L);
@@ -106,8 +105,8 @@ public class PlanetTest {
 		assertEquals(planet.getEnergy().getActualAmount(), planet2.getEnergy().getActualAmount());
 		assertEquals(planet.getOwner(), planet2.getOwner());
 		assertNotNull(planet2.getBuildings());
-		assertEquals(planet.getBuildings().length,
-				planet2.getBuildings().length);
+		assertEquals(planet.getBuildings().toBuildingArray().length,
+				planet2.getBuildings().toBuildingArray().length);
 		for (Building b1 : planet.getBuildings()) {
 			Boolean isPresent = false;
 			for (Building b2 : planet2.getBuildings()) {

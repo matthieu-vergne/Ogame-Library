@@ -20,11 +20,6 @@ import javax.swing.WindowConstants;
 import org.ogameoptimizer.gui.panel.UserPanel;
 import org.ogameoptimizer.ogame.Planet;
 import org.ogameoptimizer.ogame.User;
-import org.ogameoptimizer.ogame.building.resources.CrystalMine;
-import org.ogameoptimizer.ogame.building.resources.DeuteriumMine;
-import org.ogameoptimizer.ogame.building.resources.MetalMine;
-import org.ogameoptimizer.ogame.building.resources.Producer;
-import org.ogameoptimizer.ogame.building.resources.SolarCentral;
 
 @SuppressWarnings("serial")
 public class Optimizer extends JFrame {
@@ -80,26 +75,11 @@ public class Optimizer extends JFrame {
 		planet.getDeuterium().setActualAmount(30L);
 		planet.getEnergy().setActualAmount(10L);
 
-		Producer producer = new MetalMine();
-		producer.setPlanet(planet);
-		producer.setLevel(4);
-		planet.constructBuilding(producer);
-
-		producer = new CrystalMine();
-		producer.setPlanet(planet);
-		producer.setLevel(2);
-		planet.constructBuilding(producer);
-
-		producer = new DeuteriumMine();
-		producer.setPlanet(planet);
-		producer.setLevel(2);
-		producer.setMaximumProductionRate(0.6);
-		planet.constructBuilding(producer);
-
-		producer = new SolarCentral();
-		producer.setPlanet(planet);
-		producer.setLevel(4);
-		planet.constructBuilding(producer);
+		planet.getBuildings().metalMine.setLevel(4);
+		planet.getBuildings().crystalMine.setLevel(4);
+		planet.getBuildings().deuteriumMine.setLevel(2);
+		planet.getBuildings().deuteriumMine.setMaximumProductionRate(0.6);
+		planet.getBuildings().solarCentral.setLevel(4);
 
 		planet.setName("test-planet");
 

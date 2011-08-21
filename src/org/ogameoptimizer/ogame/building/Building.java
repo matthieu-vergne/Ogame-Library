@@ -9,7 +9,7 @@ import org.ogameoptimizer.ogame.Planet;
 
 public abstract class Building implements Externalizable {
 
-	private Integer level = 1;
+	private Integer level = 0;
 	public Integer getLevel() {
 		return level;
 	}

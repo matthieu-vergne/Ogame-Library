@@ -19,7 +19,7 @@ public abstract class BuildingTest {
 	@Test
 	public void testLevel() {
 		Building building = createBuilding();
-		assertEquals(1, (long) building.getLevel());
+		assertEquals(0, (long) building.getLevel());
 
 		building.setLevel(5);
 		assertEquals(5, (long) building.getLevel());

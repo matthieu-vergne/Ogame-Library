@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.ogameoptimizer.ogame.building.Building;
+import org.ogameoptimizer.ogame.building.BuildingSet;
 import org.ogameoptimizer.ogame.building.resources.Producer;
 import org.ogameoptimizer.ogame.resource.Antimatter;
 import org.ogameoptimizer.ogame.resource.Crystal;
@@ -38,6 +39,7 @@ public class Planet implements Externalizable {
 		this.temperatureMin = temperatureMin;
 		this.temperatureMax = temperatureMax;
 		this.position = position;
+		buildings.setPlanet(this);
 	}
 
 	private final Metal metal = new Metal();
@@ -70,18 +72,10 @@ public class Planet implements Externalizable {
 		return energy;
 	}
 
-	private final Collection<Building> buildings = new ArrayList<Building>();
+	private BuildingSet buildings = new BuildingSet();
 
-	public Building[] getBuildings() {
-		return buildings.toArray(new Building[0]);
-	}
-
-	public void constructBuilding(Building building) {
-		buildings.add(building);
-		building.setPlanet(this);
-		if (building instanceof Producer) {
-			updateEnergy();
-		}
+	public BuildingSet getBuildings() {
+		return buildings;
 	}
 
 	public void updateEnergy() {
@@ -197,10 +191,7 @@ public class Planet implements Externalizable {
 		out.writeLong(deuterium.getActualAmount());
 		out.writeLong(antimatter.getActualAmount());
 		out.writeLong(energy.getActualAmount());
-		out.writeInt(buildings.size());
-		for (Building building : buildings) {
-			out.writeObject(building);
-		}
+		out.writeObject(buildings);
 	}
 
 	@Override
@@ -217,12 +208,6 @@ public class Planet implements Externalizable {
 		deuterium.setActualAmount(in.readLong());
 		antimatter.setActualAmount(in.readLong());
 		energy.setActualAmount(in.readLong());
-		Integer buildingCounter = in.readInt();
-		while (buildingCounter > 0) {
-			Building building = (Building) in.readObject();
-			building.setPlanet(this);
-			buildings.add(building);
-			buildingCounter--;
-		}
+		buildings = (BuildingSet) in.readObject();
 	}
 }
