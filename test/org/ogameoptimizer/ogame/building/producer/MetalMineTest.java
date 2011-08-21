@@ -1,42 +1,42 @@
-package org.ogameoptimizer.ogame.building.resources;
+package org.ogameoptimizer.ogame.building.producer;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-import org.ogameoptimizer.ogame.building.producer.CrystalMine;
+import org.ogameoptimizer.ogame.building.producer.MetalMine;
 import org.ogameoptimizer.ogame.building.producer.Producer;
 import org.ogameoptimizer.ogame.resource.ResourceSet;
 
-public class CrystalMineTest extends ProducerTest {
+public class MetalMineTest extends ProducerTest {
 
 	@Override
 	public Producer createProducer() {
-		return new CrystalMine();
+		return new MetalMine();
 	}
 
 	@Test
 	public void testProductionFormula() {
-		CrystalMine mine = new CrystalMine();
+		MetalMine mine = new MetalMine();
 
-		mine.setLevel(1);
-		assertEquals(22, (long) mine.getProductionBaseForCrystal());
+		mine.setLevel(2);
+		assertEquals(72, (long) mine.getProductionBaseForMetal());
 
 		mine.setLevel(5);
-		assertEquals(161, (long) mine.getProductionBaseForCrystal());
+		assertEquals(241, (long) mine.getProductionBaseForMetal());
 
 		mine.setLevel(10);
-		assertEquals(518, (long) mine.getProductionBaseForCrystal());
+		assertEquals(778, (long) mine.getProductionBaseForMetal());
 
 		mine.setLevel(15);
-		assertEquals(1253, (long) mine.getProductionBaseForCrystal());
+		assertEquals(1879, (long) mine.getProductionBaseForMetal());
 	}
 
 	@Test
 	public void testEnergyFormula() {
-		CrystalMine mine = new CrystalMine();
+		MetalMine mine = new MetalMine();
 
-		mine.setLevel(1);
-		assertEquals(-11, (long) mine.getProductionBaseForEnergy());
+		mine.setLevel(2);
+		assertEquals(-25, (long) mine.getProductionBaseForEnergy());
 
 		mine.setLevel(5);
 		assertEquals(-81, (long) mine.getProductionBaseForEnergy());
@@ -50,13 +50,13 @@ public class CrystalMineTest extends ProducerTest {
 
 	@Test
 	public void testCostFormula() {
-		CrystalMine mine = new CrystalMine();
+		MetalMine mine = new MetalMine();
 
 		{
-			mine.setLevel(4);
+			mine.setLevel(5);
 			ResourceSet cost = mine.getNextLevelCost();
-			assertEquals(314, (long) cost.metal.getAmount());
-			assertEquals(157, (long) cost.crystal.getAmount());
+			assertEquals(455, (long) cost.metal.getAmount());
+			assertEquals(113, (long) cost.crystal.getAmount());
 			assertEquals(0, (long) cost.deuterium.getAmount());
 			assertEquals(0, (long) cost.antimatter.getAmount());
 			assertEquals(0, (long) cost.energy.getAmount());

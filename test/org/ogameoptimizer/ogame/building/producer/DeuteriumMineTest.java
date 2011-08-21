@@ -1,4 +1,4 @@
-package org.ogameoptimizer.ogame.building.resources;
+package org.ogameoptimizer.ogame.building.producer;
 
 import static org.junit.Assert.assertEquals;
 
