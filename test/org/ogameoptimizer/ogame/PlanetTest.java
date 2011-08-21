@@ -60,7 +60,7 @@ public class PlanetTest {
 		planet.setName("Pythagore");
 		planet.setDiameter(50000L);
 		planet.setPosition(new Position(2, 54, 1));
-		planet.setTemperatureMax(20);
+		planet.setTemperatureAverage(20);
 		planet.setTemperatureMin(-20);
 		planet.getBuildings().metalMine.setLevel(5);
 		planet.getBuildings().crystalMine.setLevel(4);
@@ -95,7 +95,7 @@ public class PlanetTest {
 		assertNotNull(planet2);
 		assertEquals(planet.getName(), planet2.getName());
 		assertEquals(planet.getDiameter(), planet2.getDiameter());
-		assertEquals(planet.getTemperatureMax(), planet2.getTemperatureMax());
+		assertEquals(planet.getTemperatureAverage(), planet2.getTemperatureAverage());
 		assertEquals(planet.getTemperatureMin(), planet2.getTemperatureMin());
 		assertEquals(planet.getPosition(), planet2.getPosition());
 		assertEquals(planet.getMetal().getAmount(), planet2.getMetal().getAmount());

@@ -25,7 +25,8 @@ public class Planet implements Externalizable {
 	 * Create a basic planet :
 	 * <ul>
 	 * <li>with a diameter of 12.800km</li>
-	 * <li>with a temperature between -32°C and 8°C</li>
+	 * <li>minimum temperature of -32°C</li>
+	 * <li>average temperature of 8°C</li>
 	 * <li>at the position [4:358:12]</li>
 	 * </ul>
 	 * This data is an example of mother planet.
@@ -35,10 +36,10 @@ public class Planet implements Externalizable {
 	}
 
 	public Planet(Long diameter, Integer temperatureMin,
-			Integer temperatureMax, Position position) {
+			Integer temperatureAverage, Position position) {
 		this.diameter = diameter;
 		this.temperatureMin = temperatureMin;
-		this.temperatureMax = temperatureMax;
+		this.temperatureAverage = temperatureAverage;
 		this.position = position;
 		buildings.setPlanet(this);
 	}
@@ -142,14 +143,14 @@ public class Planet implements Externalizable {
 		return temperatureMin;
 	}
 
-	private Integer temperatureMax;
+	private Integer temperatureAverage;
 
-	public void setTemperatureMax(Integer temperatureMax) {
-		this.temperatureMax = temperatureMax;
+	public void setTemperatureAverage(Integer temperatureAverage) {
+		this.temperatureAverage = temperatureAverage;
 	}
 
-	public Integer getTemperatureMax() {
-		return temperatureMax;
+	public Integer getTemperatureAverage() {
+		return temperatureAverage;
 	}
 
 	private Position position;
@@ -189,7 +190,7 @@ public class Planet implements Externalizable {
 	public void writeExternal(ObjectOutput out) throws IOException {
 		out.writeLong(diameter);
 		out.writeInt(temperatureMin);
-		out.writeInt(temperatureMax);
+		out.writeInt(temperatureAverage);
 		out.writeObject(position);
 		out.writeObject(owner);
 		out.writeUTF(name);
@@ -207,7 +208,7 @@ public class Planet implements Externalizable {
 			ClassNotFoundException {
 		diameter = in.readLong();
 		temperatureMin = in.readInt();
-		temperatureMax = in.readInt();
+		temperatureAverage = in.readInt();
 		position = (Position) in.readObject();
 		owner = (User) in.readObject();
 		name = in.readUTF();

@@ -72,7 +72,7 @@ public class UserTest {
 			planet.setName("Pythagore");
 			planet.setDiameter(500000L);
 			planet.setPosition(new Position(3, 45, 7));
-			planet.setTemperatureMax(40);
+			planet.setTemperatureAverage(40);
 			planet.setTemperatureMin(-10);
 			planet.getBuildings().metalMine.setLevel(5);
 			planet.getBuildings().crystalMine.setLevel(5);
@@ -90,7 +90,7 @@ public class UserTest {
 			planet.setName("Al-Kashi");
 			planet.setDiameter(50000L);
 			planet.setPosition(new Position(2, 54, 1));
-			planet.setTemperatureMax(20);
+			planet.setTemperatureAverage(20);
 			planet.setTemperatureMin(-20);
 			planet.getBuildings().metalMine.setLevel(5);
 			planet.getBuildings().crystalMine.setLevel(4);
