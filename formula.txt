@@ -60,12 +60,6 @@ Chaque formule donne le prix du bâtiment en question en fonction du niveau deman
     Centrale électrique de fusion : 900 * 1,8^(niveau-1) métal et 360 * 1,8^(niveau-1) cristal et 180 * 1,8^(niveau-1) deutérium
 
 
-    Technologie graviton : *3 par niveau (niveau 1 : 300K d'énergie, sachant qu'il est inutile actuellement de passer au niveaux supérieurs)
-
-
-    Tous les autres recherches et bâtiments : *2^(niveau-1)
-
-
 Temps de construction des bâtiments
 
     [ (cristal + métal) / 5.000 ] * [ 2 / (1 + niveau Usine de Robot) ] * 0,5^niveau Nanites
