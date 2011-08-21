@@ -1,10 +1,10 @@
-package org.ogameoptimizer.ogame.building.stock;
+package org.ogameoptimizer.ogame.building.tank;
 
 import org.ogameoptimizer.ogame.building.Building;
 import org.ogameoptimizer.ogame.resource.Resource;
 import org.ogameoptimizer.ogame.resource.ResourceSet;
 
-public abstract class Stock extends Building {
+public abstract class Tank extends Building {
 
 	public abstract ResourceSet getInitialLimit();
 

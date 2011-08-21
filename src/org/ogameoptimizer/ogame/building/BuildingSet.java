@@ -17,9 +17,9 @@ import org.ogameoptimizer.ogame.building.producer.DeuteriumMine;
 import org.ogameoptimizer.ogame.building.producer.FusionCentral;
 import org.ogameoptimizer.ogame.building.producer.MetalMine;
 import org.ogameoptimizer.ogame.building.producer.SolarCentral;
-import org.ogameoptimizer.ogame.building.stock.CrystalStock;
-import org.ogameoptimizer.ogame.building.stock.DeuteriumStock;
-import org.ogameoptimizer.ogame.building.stock.MetalStock;
+import org.ogameoptimizer.ogame.building.tank.CrystalTank;
+import org.ogameoptimizer.ogame.building.tank.DeuteriumTank;
+import org.ogameoptimizer.ogame.building.tank.MetalTank;
 
 public class BuildingSet implements Iterable<Building>, Externalizable {
 	public final SolarCentral solarCentral = new SolarCentral();
@@ -27,9 +27,9 @@ public class BuildingSet implements Iterable<Building>, Externalizable {
 	public final CrystalMine crystalMine = new CrystalMine();
 	public final DeuteriumMine deuteriumMine = new DeuteriumMine();
 	public final FusionCentral fusionCentral = new FusionCentral();
-	public final MetalStock metalStock = new MetalStock();
-	public final CrystalStock crystalStock = new CrystalStock();
-	public final DeuteriumStock deuteriumStock = new DeuteriumStock();
+	public final MetalTank metalStock = new MetalTank();
+	public final CrystalTank crystalStock = new CrystalTank();
+	public final DeuteriumTank deuteriumStock = new DeuteriumTank();
 	public final RobotFactory robotFactory = new RobotFactory();
 	public final Dock dock = new Dock();
 	public final MissileSilo missileSilo = new MissileSilo();

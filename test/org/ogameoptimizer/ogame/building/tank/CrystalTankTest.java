@@ -1,20 +1,22 @@
-package org.ogameoptimizer.ogame.building.stock;
+package org.ogameoptimizer.ogame.building.tank;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+import org.ogameoptimizer.ogame.building.tank.CrystalTank;
+import org.ogameoptimizer.ogame.building.tank.Tank;
 import org.ogameoptimizer.ogame.resource.ResourceSet;
 
-public class CrystalStockTest extends StockTest {
+public class CrystalTankTest extends TankTest {
 
 	@Override
-	public Stock createStock() {
-		return new CrystalStock();
+	public Tank createStock() {
+		return new CrystalTank();
 	}
 
 	@Test
 	public void testLimit() {
-		CrystalStock stock = new CrystalStock();
+		CrystalTank stock = new CrystalTank();
 
 		{
 			stock.setLevel(0);
@@ -69,7 +71,7 @@ public class CrystalStockTest extends StockTest {
 
 	@Test
 	public void testCost() {
-		CrystalStock stock = new CrystalStock();
+		CrystalTank stock = new CrystalTank();
 
 		{
 			stock.setLevel(0);

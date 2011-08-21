@@ -1,8 +1,8 @@
-package org.ogameoptimizer.ogame.building.stock;
+package org.ogameoptimizer.ogame.building.tank;
 
 import org.ogameoptimizer.ogame.resource.ResourceSet;
 
-public class CrystalStock extends Stock {
+public class CrystalTank extends Tank {
 
 	@Override
 	public ResourceSet getInitialLimit() {
