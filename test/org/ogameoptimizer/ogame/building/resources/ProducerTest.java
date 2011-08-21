@@ -11,6 +11,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import org.junit.Test;
+import org.ogameoptimizer.ogame.Planet;
+import org.ogameoptimizer.ogame.Position;
 import org.ogameoptimizer.ogame.building.Building;
 import org.ogameoptimizer.ogame.building.BuildingTest;
 
@@ -61,6 +63,7 @@ public abstract class ProducerTest extends BuildingTest {
 		File file = new File("producer");
 		file.deleteOnExit();
 		Producer producer = createProducer();
+		producer.setPlanet(new Planet(15000L, -30, 12, new Position(5, 21, 3)));
 		
 		try {
 			FileOutputStream fos = new FileOutputStream(file);
@@ -86,5 +89,8 @@ public abstract class ProducerTest extends BuildingTest {
 		assertNotNull(producer2);
 		assertEquals(producer.getActualEnergy(), producer2.getActualEnergy());
 		assertEquals(producer.getActualProductionRate(), producer2.getActualProductionRate());
+		assertEquals(producer.getLevel(), producer2.getLevel());
+		assertNotNull(producer2.getPlanet());
+		assertEquals(producer.getPlanet().getPosition(), producer2.getPlanet().getPosition());
 	}
 }

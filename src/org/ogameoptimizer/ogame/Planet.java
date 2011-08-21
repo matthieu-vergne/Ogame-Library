@@ -17,6 +17,7 @@ import org.ogameoptimizer.ogame.resource.Energy;
 import org.ogameoptimizer.ogame.resource.IProducer;
 import org.ogameoptimizer.ogame.resource.Metal;
 import org.ogameoptimizer.ogame.resource.NaturalProducer;
+import org.ogameoptimizer.ogame.technology.TechnologySet;
 
 public class Planet implements Externalizable {
 
@@ -76,6 +77,12 @@ public class Planet implements Externalizable {
 
 	public BuildingSet getBuildings() {
 		return buildings;
+	}
+
+	private TechnologySet technologies = new TechnologySet();
+
+	public TechnologySet getTechnologies() {
+		return technologies;
 	}
 
 	public void updateEnergy() {
@@ -192,6 +199,7 @@ public class Planet implements Externalizable {
 		out.writeLong(antimatter.getAmount());
 		out.writeLong(energy.getAmount());
 		out.writeObject(buildings);
+		out.writeObject(technologies);
 	}
 
 	@Override
@@ -209,5 +217,6 @@ public class Planet implements Externalizable {
 		antimatter.setAmount(in.readLong());
 		energy.setAmount(in.readLong());
 		buildings = (BuildingSet) in.readObject();
+		technologies = (TechnologySet) in.readObject();
 	}
 }

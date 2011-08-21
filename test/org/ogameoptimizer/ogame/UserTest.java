@@ -15,6 +15,7 @@ import java.util.Arrays;
 
 import org.junit.Test;
 import org.ogameoptimizer.ogame.building.Building;
+import org.ogameoptimizer.ogame.technology.Technology;
 
 public class UserTest {
 
@@ -134,15 +135,19 @@ public class UserTest {
 				if (p2.getPosition().equals(p1.getPosition())) {
 					isPresent = true;
 					for (Building b1 : p1.getBuildings()) {
-						Boolean isPresent2 = false;
 						for (Building b2 : p2.getBuildings()) {
 							if (b2.getClass().equals(b1.getClass())) {
-								isPresent2 = true;
+								assertEquals(b1.getLevel(), b2.getLevel());
 								break;
 							}
 						}
-						if (!isPresent2) {
-							fail(b1 + " has not been retrieved.");
+					}
+					for (Technology t1 : p1.getTechnologies()) {
+						for (Technology t2 : p2.getTechnologies()) {
+							if (t2.getClass().equals(t1.getClass())) {
+								assertEquals(t1.getLevel(), t2.getLevel());
+								break;
+							}
 						}
 					}
 					break;

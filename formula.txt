@@ -57,14 +57,6 @@ Coûts de l'amélioration des bâtiments et recherches par niveau
 
 Chaque formule donne le prix du bâtiment en question en fonction du niveau demandé.
 
-    Mine de métal : 60 * 1,5^(niveau-1) métal et 15 * 1,5^(niveau-1) cristal
-
-    Mine de cristal : 48 * 1,6^(niveau-1) métal et 24 * 1,6^(niveau-1) cristal
-
-    Synthétiseur de deutérium : 225*1,5^(niveau-1) métal et 75 * 1,5^(niveau-1) cristal
-
-    Centrale électrique solaire : 75 * 1,5^(niveau-1) métal et 30 * 1,5^(niveau-1) cristal
-
     Centrale électrique de fusion : 900 * 1,8^(niveau-1) métal et 360 * 1,8^(niveau-1) cristal et 180 * 1,8^(niveau-1) deutérium
 
 
@@ -72,30 +64,6 @@ Chaque formule donne le prix du bâtiment en question en fonction du niveau deman
 
 
     Tous les autres recherches et bâtiments : *2^(niveau-1)
-
-
-Coûts cumulés d'un bâtiment en fonction du niveau souhaité
-
-    Mine de métal : 60 * (1 - 1,5^niveau) / (-0,5) métal et 15 * (1 - 1,5^niveau) / ( - 0,5) cristal
-
-    Mine de cristal : 48 * (1 - 1,6^niveau) / (-0,6) métal et 24 * (1 - 1,6^niveau) / (-0,6) cristal
-
-    Synthétiseur de deutérium : 225 * (1 - 1,5^niveau) / (-0,5) métal et 75 * (1 - 1,5^niveau) / (-0,5) cristal
-
-    Centrale électrique solaire : 75 * (1 - 1,5^niveau) / (-0,5) métal et 30 * (1 - 1,5^niveau) / (-0,5) cristal
-
-    Centrale électrique de fusion : 900 * (1 - 1,8^niveau) / ( -0,8 ) métal et 360 * (1 - 1,8^niveau) / ( -0,8 ) cristal
-
-    Pour tous les autres bâtiments : (coûts niveau 1) * - (1 - 2^niveau)
-
-Exemple 1 : je n'ai pas de centrale de fusion, et il m'en faut une niveau 6. Combien dois-je fournir de ressources au total ?
-Donc la réponse de l'exemple est : 900 * (1 - 1,8^6) / (-0,8 ) métal et 360 * (1 - 1,8^6) / ( -0,8 ) cristal. Soit 37.138 métal et 14.855 cristal
-
-Exemple 2 :
-j'ai déjà un bâtiment de niveau 6, je veux savoir combien coûtera l'upgrade jusqu'au niveau 9.
-Réponse : il suffit de faire : (coûts cumulés jusqu'au niveau souhaité) - (coûts cumulés du niveau actuel)
-En fait, la partie avant le - correspond à ce qu'il faut payer pour aller du niveau 1 à X (ici 9), et la partie après le - correspond à ce que tu as déjà payé quand tu es au niveau Y (ici 6), sachant que Y < X.
-
 
 
 Temps de construction des bâtiments

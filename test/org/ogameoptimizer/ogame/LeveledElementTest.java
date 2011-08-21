@@ -1,4 +1,4 @@
-package org.ogameoptimizer.ogame.building;
+package org.ogameoptimizer.ogame;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -11,48 +11,50 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import org.junit.Test;
-import org.ogameoptimizer.ogame.LeveledElement;
-import org.ogameoptimizer.ogame.LeveledElementTest;
 
-public abstract class BuildingTest extends LeveledElementTest {
 
-	abstract public Building createBuilding();
+public abstract class LeveledElementTest {
+
+	public abstract LeveledElement createLeveledElement();
 	
-	@Override
-	public LeveledElement createLeveledElement() {
-		return createBuilding();
+	@Test
+	public void testLevel() {
+		LeveledElement element = createLeveledElement();
+		assertEquals(0, (long) element.getLevel());
+
+		element.setLevel(5);
+		assertEquals(5, (long) element.getLevel());
 	}
+
 
 	@Test
 	public void testPersistence() {
 		File file = new File("persistence");
 		file.deleteOnExit();
-		Building building = createBuilding();
+		LeveledElement element = createLeveledElement();
 		
 		try {
 			FileOutputStream fos = new FileOutputStream(file);
 			ObjectOutputStream out = new ObjectOutputStream(fos);
-			out.writeObject(building);
+			out.writeObject(element);
 			out.close();
 		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
 		
-		Building building2 = null;
+		LeveledElement element2 = null;
 		
 		try {
 			FileInputStream fis = new FileInputStream(file);
 			ObjectInputStream in = new ObjectInputStream(fis);
-			building2 = (Building) in.readObject();
+			element2 = (LeveledElement) in.readObject();
 			in.close();
 		} catch (Exception ex) {
 			throw new RuntimeException(ex);
 		}
 		file.delete();
 		
-		assertNotNull(building2);
-		assertEquals(building.getLevel(), building2.getLevel());
-		assertNotNull(building2.getPlanet());
-		assertEquals(building.getPlanet().getPosition(), building2.getPlanet().getPosition());
+		assertNotNull(element2);
+		assertEquals(element.getLevel(), element2.getLevel());
 	}
 }

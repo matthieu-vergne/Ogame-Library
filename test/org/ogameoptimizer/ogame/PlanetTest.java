@@ -3,7 +3,6 @@ package org.ogameoptimizer.ogame;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,6 +13,7 @@ import java.io.ObjectOutputStream;
 
 import org.junit.Test;
 import org.ogameoptimizer.ogame.building.Building;
+import org.ogameoptimizer.ogame.technology.Technology;
 
 public class PlanetTest {
 
@@ -108,20 +108,25 @@ public class PlanetTest {
 		assertEquals(planet.getBuildings().toBuildingArray().length,
 				planet2.getBuildings().toBuildingArray().length);
 		for (Building b1 : planet.getBuildings()) {
-			Boolean isPresent = false;
 			for (Building b2 : planet2.getBuildings()) {
 				if (b2.getClass().equals(b1.getClass())) {
-					isPresent = true;
+					assertEquals(b1.getLevel(), b2.getLevel());
 					break;
 				}
-			}
-			if (!isPresent) {
-				fail(b1 + " has not been retrieved.");
 			}
 		}
 		
 		for(Building building : planet2.getBuildings()) {
 			assertEquals(planet2, building.getPlanet());
+		}
+		
+		for (Technology t1 : planet.getTechnologies()) {
+			for (Technology t2 : planet2.getTechnologies()) {
+				if (t2.getClass().equals(t1.getClass())) {
+					assertEquals(t1.getLevel(), t2.getLevel());
+					break;
+				}
+			}
 		}
 	}
 }
