@@ -13,6 +13,7 @@ import java.io.ObjectOutputStream;
 import org.junit.Test;
 import org.ogameoptimizer.ogame.LeveledElement;
 import org.ogameoptimizer.ogame.LeveledElementTest;
+import org.ogameoptimizer.ogame.Planet;
 
 public abstract class BuildingTest extends LeveledElementTest {
 
@@ -28,6 +29,9 @@ public abstract class BuildingTest extends LeveledElementTest {
 		File file = new File("persistence");
 		file.deleteOnExit();
 		Building building = createBuilding();
+		if (building.getPlanet() == null) {
+			building.setPlanet(new Planet());
+		}
 		
 		try {
 			FileOutputStream fos = new FileOutputStream(file);
@@ -52,7 +56,9 @@ public abstract class BuildingTest extends LeveledElementTest {
 		
 		assertNotNull(building2);
 		assertEquals(building.getLevel(), building2.getLevel());
-		assertNotNull(building2.getPlanet());
-		assertEquals(building.getPlanet().getPosition(), building2.getPlanet().getPosition());
+		if (building.getPlanet() != null) {
+			assertNotNull(building2.getPlanet());
+			assertEquals(building.getPlanet().getPosition(), building2.getPlanet().getPosition());
+		}
 	}
 }

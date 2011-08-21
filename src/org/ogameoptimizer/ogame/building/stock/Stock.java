@@ -10,13 +10,16 @@ public abstract class Stock extends Building {
 
 	public ResourceSet getLimit() {
 		ResourceSet limit = getInitialLimit();
-		for (Resource resource : new Resource[] {}) {
-			resource.setAmount((long) (resource.getAmount() + 5000 * Math
-					.floor(Math.pow(1.6, getLevel()))));
+		for (Resource resource : new Resource[] { limit.metal, limit.crystal,
+				limit.deuterium, limit.antimatter, limit.energy }) {
+			if (resource.getAmount() > 0 && getLevel() > 0) {
+				resource.setAmount((long) (5000 * Math.floor(2.5 * Math
+						.exp(20.0 / 33.0 * getLevel()))));
+			}
 		}
 		return limit;
 	}
-	
+
 	public abstract ResourceSet getInitialCost();
 
 }

@@ -34,7 +34,8 @@ public abstract class LeveledElement implements Externalizable {
 
 	public ResourceSet getNextLevelCost() {
 		ResourceSet cost = getInitialCost();
-		for (Resource resource : new Resource[] {}) {
+		for (Resource resource : new Resource[] { cost.metal, cost.crystal,
+				cost.deuterium, cost.antimatter, cost.energy }) {
 			resource.setAmount((long) (resource.getAmount() * Math.pow(2,
 					getLevel())));
 		}

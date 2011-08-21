@@ -30,6 +30,7 @@ public class BuildingSet implements Iterable<Building>, Externalizable {
 	public final MetalStock metalStock = new MetalStock();
 	public final CrystalStock crystalStock = new CrystalStock();
 	public final DeuteriumStock deuteriumStock = new DeuteriumStock();
+	public final RobotFactory robotFactory = new RobotFactory();
 
 	public Building[] toBuildingArray() {
 		Collection<Building> buildings = new ArrayList<Building>();
@@ -110,6 +111,8 @@ public class BuildingSet implements Iterable<Building>, Externalizable {
 		out.writeInt(metalStock.getLevel());
 		out.writeInt(crystalStock.getLevel());
 		out.writeInt(deuteriumStock.getLevel());
+		
+		out.writeInt(robotFactory.getLevel());
 
 		out.writeObject(getPlanet());
 	}
@@ -135,6 +138,8 @@ public class BuildingSet implements Iterable<Building>, Externalizable {
 		metalStock.setLevel(in.readInt());
 		crystalStock.setLevel(in.readInt());
 		deuteriumStock.setLevel(in.readInt());
+		
+		robotFactory.setLevel(in.readInt());
 
 		setPlanet((Planet) in.readObject());
 	}

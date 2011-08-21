@@ -1,25 +1,21 @@
 package org.ogameoptimizer.ogame.building.stock;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
-import org.ogameoptimizer.ogame.Planet;
 import org.ogameoptimizer.ogame.resource.ResourceSet;
-
-import static org.junit.Assert.*;
-
 
 public class MetalStockTest extends StockTest {
 
 	@Override
 	public Stock createStock() {
-		MetalStock stock = new MetalStock();
-		stock.setPlanet(new Planet());
-		return stock;
+		return new MetalStock();
 	}
 
 	@Test
 	public void testLimit() {
 		MetalStock stock = new MetalStock();
-		
+
 		{
 			stock.setLevel(0);
 			ResourceSet limit = stock.getLimit();
@@ -29,7 +25,7 @@ public class MetalStockTest extends StockTest {
 			assertEquals(0, (long) limit.antimatter.getAmount());
 			assertEquals(0, (long) limit.energy.getAmount());
 		}
-		
+
 		{
 			stock.setLevel(1);
 			ResourceSet limit = stock.getLimit();
@@ -39,7 +35,7 @@ public class MetalStockTest extends StockTest {
 			assertEquals(0, (long) limit.antimatter.getAmount());
 			assertEquals(0, (long) limit.energy.getAmount());
 		}
-		
+
 		{
 			stock.setLevel(5);
 			ResourceSet limit = stock.getLimit();
@@ -49,7 +45,7 @@ public class MetalStockTest extends StockTest {
 			assertEquals(0, (long) limit.antimatter.getAmount());
 			assertEquals(0, (long) limit.energy.getAmount());
 		}
-		
+
 		{
 			stock.setLevel(10);
 			ResourceSet limit = stock.getLimit();
@@ -59,7 +55,7 @@ public class MetalStockTest extends StockTest {
 			assertEquals(0, (long) limit.antimatter.getAmount());
 			assertEquals(0, (long) limit.energy.getAmount());
 		}
-		
+
 		{
 			stock.setLevel(15);
 			ResourceSet limit = stock.getLimit();
@@ -74,7 +70,7 @@ public class MetalStockTest extends StockTest {
 	@Test
 	public void testCost() {
 		MetalStock stock = new MetalStock();
-		
+
 		{
 			stock.setLevel(0);
 			ResourceSet cost = stock.getNextLevelCost();
@@ -84,7 +80,7 @@ public class MetalStockTest extends StockTest {
 			assertEquals(0, (long) cost.antimatter.getAmount());
 			assertEquals(0, (long) cost.energy.getAmount());
 		}
-		
+
 		// TODO complete with other levels
 	}
 }
