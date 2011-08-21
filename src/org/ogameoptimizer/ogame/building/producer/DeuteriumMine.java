@@ -41,4 +41,9 @@ public class DeuteriumMine extends Producer {
 				getLevel())));
 		return cost;
 	}
+	
+	@Override
+	public ResourceSet getInitialCost() {
+		return new DeuteriumMine().getNextLevelCost();
+	}
 }

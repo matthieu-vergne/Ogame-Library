@@ -17,6 +17,9 @@ import org.ogameoptimizer.ogame.building.producer.DeuteriumMine;
 import org.ogameoptimizer.ogame.building.producer.FusionCentral;
 import org.ogameoptimizer.ogame.building.producer.MetalMine;
 import org.ogameoptimizer.ogame.building.producer.SolarCentral;
+import org.ogameoptimizer.ogame.building.stock.CrystalStock;
+import org.ogameoptimizer.ogame.building.stock.DeuteriumStock;
+import org.ogameoptimizer.ogame.building.stock.MetalStock;
 
 public class BuildingSet implements Iterable<Building>, Externalizable {
 	public final SolarCentral solarCentral = new SolarCentral();
@@ -24,6 +27,9 @@ public class BuildingSet implements Iterable<Building>, Externalizable {
 	public final CrystalMine crystalMine = new CrystalMine();
 	public final DeuteriumMine deuteriumMine = new DeuteriumMine();
 	public final FusionCentral fusionCentral = new FusionCentral();
+	public final MetalStock metalStock = new MetalStock();
+	public final CrystalStock crystalStock = new CrystalStock();
+	public final DeuteriumStock deuteriumStock = new DeuteriumStock();
 
 	public Building[] toBuildingArray() {
 		Collection<Building> buildings = new ArrayList<Building>();
@@ -88,19 +94,23 @@ public class BuildingSet implements Iterable<Building>, Externalizable {
 	public void writeExternal(ObjectOutput out) throws IOException {
 		out.writeInt(solarCentral.getLevel());
 		out.writeDouble(solarCentral.getMaximumProductionRate());
-		
+
 		out.writeInt(metalMine.getLevel());
 		out.writeDouble(metalMine.getMaximumProductionRate());
-		
+
 		out.writeInt(crystalMine.getLevel());
 		out.writeDouble(crystalMine.getMaximumProductionRate());
-		
+
 		out.writeInt(deuteriumMine.getLevel());
 		out.writeDouble(deuteriumMine.getMaximumProductionRate());
-		
+
 		out.writeInt(fusionCentral.getLevel());
 		out.writeDouble(fusionCentral.getMaximumProductionRate());
-		
+
+		out.writeInt(metalStock.getLevel());
+		out.writeInt(crystalStock.getLevel());
+		out.writeInt(deuteriumStock.getLevel());
+
 		out.writeObject(getPlanet());
 	}
 
@@ -109,19 +119,23 @@ public class BuildingSet implements Iterable<Building>, Externalizable {
 			ClassNotFoundException {
 		solarCentral.setLevel(in.readInt());
 		solarCentral.setMaximumProductionRate(in.readDouble());
-		
+
 		metalMine.setLevel(in.readInt());
 		metalMine.setMaximumProductionRate(in.readDouble());
-		
+
 		crystalMine.setLevel(in.readInt());
 		crystalMine.setMaximumProductionRate(in.readDouble());
-		
+
 		deuteriumMine.setLevel(in.readInt());
 		deuteriumMine.setMaximumProductionRate(in.readDouble());
-		
+
 		fusionCentral.setLevel(in.readInt());
 		fusionCentral.setMaximumProductionRate(in.readDouble());
-		
+
+		metalStock.setLevel(in.readInt());
+		crystalStock.setLevel(in.readInt());
+		deuteriumStock.setLevel(in.readInt());
+
 		setPlanet((Planet) in.readObject());
 	}
 }

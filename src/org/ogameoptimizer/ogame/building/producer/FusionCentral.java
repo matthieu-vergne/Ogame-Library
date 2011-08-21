@@ -41,4 +41,9 @@ public class FusionCentral extends Producer {
 				getLevel())));
 		return cost;
 	}
+	
+	@Override
+	public ResourceSet getInitialCost() {
+		return new FusionCentral().getNextLevelCost();
+	}
 }

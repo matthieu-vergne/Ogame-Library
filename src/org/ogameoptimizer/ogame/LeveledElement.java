@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
+import org.ogameoptimizer.ogame.resource.Resource;
 import org.ogameoptimizer.ogame.resource.ResourceSet;
 
 public abstract class LeveledElement implements Externalizable {
@@ -28,6 +29,15 @@ public abstract class LeveledElement implements Externalizable {
 			ClassNotFoundException {
 		level = in.readInt();
 	}
-	
-	abstract public ResourceSet getNextLevelCost();
+
+	abstract public ResourceSet getInitialCost();
+
+	public ResourceSet getNextLevelCost() {
+		ResourceSet cost = getInitialCost();
+		for (Resource resource : new Resource[] {}) {
+			resource.setAmount((long) (resource.getAmount() * Math.pow(2,
+					getLevel())));
+		}
+		return cost;
+	}
 }

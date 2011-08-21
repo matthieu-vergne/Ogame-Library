@@ -40,4 +40,9 @@ public class MetalMine extends Producer {
 				getLevel())));
 		return cost;
 	}
+	
+	@Override
+	public ResourceSet getInitialCost() {
+		return new MetalMine().getNextLevelCost();
+	}
 }

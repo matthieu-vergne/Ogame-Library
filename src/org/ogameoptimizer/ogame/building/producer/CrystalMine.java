@@ -39,4 +39,9 @@ public class CrystalMine extends Producer {
 				getLevel())));
 		return cost;
 	}
+	
+	@Override
+	public ResourceSet getInitialCost() {
+		return new CrystalMine().getNextLevelCost();
+	}
 }

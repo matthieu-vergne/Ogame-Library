@@ -47,4 +47,10 @@ public class SolarCentral extends Producer {
 				getLevel())));
 		return cost;
 	}
+	
+	
+	@Override
+	public ResourceSet getInitialCost() {
+		return new SolarCentral().getNextLevelCost();
+	}
 }
