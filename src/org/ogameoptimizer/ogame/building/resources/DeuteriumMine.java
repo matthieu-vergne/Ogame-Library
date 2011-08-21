@@ -1,5 +1,6 @@
 package org.ogameoptimizer.ogame.building.resources;
 
+
 public class DeuteriumMine extends Producer {
 
 	@Override
@@ -28,5 +29,4 @@ public class DeuteriumMine extends Producer {
 	public Long getProductionBaseForEnergy() {
 		return (long) Math.floor(-20 * getLevel() * Math.pow(1.1, getLevel()));
 	}
-
 }

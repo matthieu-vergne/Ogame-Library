@@ -1,5 +1,7 @@
 package org.ogameoptimizer.ogame.building.resources;
 
+
+
 public class CrystalMine extends Producer {
 
 	@Override
@@ -27,5 +29,4 @@ public class CrystalMine extends Producer {
 	public Long getProductionBaseForEnergy() {
 		return (long) Math.floor(-10 * getLevel() * Math.pow(1.1, getLevel()));
 	}
-
 }

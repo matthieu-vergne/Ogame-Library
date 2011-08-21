@@ -1,6 +1,14 @@
 package org.ogameoptimizer.ogame.building.resources;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 import org.junit.Test;
 import org.ogameoptimizer.ogame.building.Building;
@@ -46,5 +54,37 @@ public abstract class ProducerTest extends BuildingTest {
 	@Test
 	public void testIProducerConstraints() {
 		// TODO add the tests of the IProducer interface
+	}
+	
+	@Test
+	public void testPersistence() {
+		File file = new File("producer");
+		file.deleteOnExit();
+		Producer producer = createProducer();
+		
+		try {
+			FileOutputStream fos = new FileOutputStream(file);
+			ObjectOutputStream out = new ObjectOutputStream(fos);
+			out.writeObject(producer);
+			out.close();
+		} catch (IOException ex) {
+			throw new RuntimeException(ex);
+		}
+		
+		Producer producer2 = null;
+		
+		try {
+			FileInputStream fis = new FileInputStream(file);
+			ObjectInputStream in = new ObjectInputStream(fis);
+			producer2 = (Producer) in.readObject();
+			in.close();
+		} catch (Exception ex) {
+			throw new RuntimeException(ex);
+		}
+		file.delete();
+		
+		assertNotNull(producer2);
+		assertEquals(producer.getActualEnergy(), producer2.getActualEnergy());
+		assertEquals(producer.getActualProductionRate(), producer2.getActualProductionRate());
 	}
 }

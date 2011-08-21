@@ -1,6 +1,9 @@
 package org.ogameoptimizer.ogame;
 
-import java.io.Serializable;
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -14,20 +17,7 @@ import org.ogameoptimizer.ogame.resource.IProducer;
 import org.ogameoptimizer.ogame.resource.Metal;
 import org.ogameoptimizer.ogame.resource.NaturalProducer;
 
-public class Planet implements Serializable {
-	private static final long serialVersionUID = 1L;
-	private final Long diameter;
-	private final Integer temperatureMin;
-	private final Integer temperatureMax;
-	private final Position position;
-	private final Metal metal = new Metal();
-	private final Crystal crystal = new Crystal();
-	private final Deuterium deuterium = new Deuterium();
-	private final Antimatter antimatter = new Antimatter();
-	private final Energy energy = new Energy();
-	private final Collection<Building> buildings = new ArrayList<Building>();
-	private User owner = null;
-	private String name = "Planet";
+public class Planet implements Externalizable {
 
 	/**
 	 * Create a basic planet :
@@ -50,32 +40,45 @@ public class Planet implements Serializable {
 		this.position = position;
 	}
 
+	private final Metal metal = new Metal();
+
 	public Metal getMetal() {
 		return metal;
 	}
+
+	private final Crystal crystal = new Crystal();
 
 	public Crystal getCrystal() {
 		return crystal;
 	}
 
+	private final Deuterium deuterium = new Deuterium();
+
 	public Deuterium getDeuterium() {
 		return deuterium;
 	}
+
+	private final Antimatter antimatter = new Antimatter();
 
 	public Antimatter getAntimatter() {
 		return antimatter;
 	}
 
+	private final Energy energy = new Energy();
+
 	public Energy getEnergy() {
 		return energy;
 	}
+
+	private final Collection<Building> buildings = new ArrayList<Building>();
 
 	public Building[] getBuildings() {
 		return buildings.toArray(new Building[0]);
 	}
 
-	public void addBuilding(Building building) {
+	public void constructBuilding(Building building) {
 		buildings.add(building);
+		building.setPlanet(this);
 		if (building instanceof Producer) {
 			updateEnergy();
 		}
@@ -108,6 +111,8 @@ public class Planet implements Serializable {
 		}
 	}
 
+	private User owner = null;
+
 	public void setOwner(User owner) {
 		this.owner = owner;
 	}
@@ -116,21 +121,47 @@ public class Planet implements Serializable {
 		return owner;
 	}
 
+	private Long diameter;
+
+	public void setDiameter(Long diameter) {
+		this.diameter = diameter;
+	}
+
 	public Long getDiameter() {
 		return diameter;
+	}
+
+	private Integer temperatureMin;
+
+	public void setTemperatureMin(Integer temperatureMin) {
+		this.temperatureMin = temperatureMin;
 	}
 
 	public Integer getTemperatureMin() {
 		return temperatureMin;
 	}
 
+	private Integer temperatureMax;
+
+	public void setTemperatureMax(Integer temperatureMax) {
+		this.temperatureMax = temperatureMax;
+	}
+
 	public Integer getTemperatureMax() {
 		return temperatureMax;
+	}
+
+	private Position position;
+
+	public void setPosition(Position position) {
+		this.position = position;
 	}
 
 	public Position getPosition() {
 		return position;
 	}
+
+	private String name = "Planet";
 
 	public void setName(String name) {
 		this.name = name;
@@ -151,5 +182,47 @@ public class Planet implements Serializable {
 			producers.add(NaturalProducer.getInstance());
 		}
 		return producers.toArray(new IProducer[producers.size()]);
+	}
+
+	@Override
+	public void writeExternal(ObjectOutput out) throws IOException {
+		out.writeLong(diameter);
+		out.writeInt(temperatureMin);
+		out.writeInt(temperatureMax);
+		out.writeObject(position);
+		out.writeObject(owner);
+		out.writeUTF(name);
+		out.writeLong(metal.getActualAmount());
+		out.writeLong(crystal.getActualAmount());
+		out.writeLong(deuterium.getActualAmount());
+		out.writeLong(antimatter.getActualAmount());
+		out.writeLong(energy.getActualAmount());
+		out.writeInt(buildings.size());
+		for (Building building : buildings) {
+			out.writeObject(building);
+		}
+	}
+
+	@Override
+	public void readExternal(ObjectInput in) throws IOException,
+			ClassNotFoundException {
+		diameter = in.readLong();
+		temperatureMin = in.readInt();
+		temperatureMax = in.readInt();
+		position = (Position) in.readObject();
+		owner = (User) in.readObject();
+		name = in.readUTF();
+		metal.setActualAmount(in.readLong());
+		crystal.setActualAmount(in.readLong());
+		deuterium.setActualAmount(in.readLong());
+		antimatter.setActualAmount(in.readLong());
+		energy.setActualAmount(in.readLong());
+		Integer buildingCounter = in.readInt();
+		while (buildingCounter > 0) {
+			Building building = (Building) in.readObject();
+			building.setPlanet(this);
+			buildings.add(building);
+			buildingCounter--;
+		}
 	}
 }

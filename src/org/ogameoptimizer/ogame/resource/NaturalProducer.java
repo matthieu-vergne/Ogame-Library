@@ -1,8 +1,11 @@
 package org.ogameoptimizer.ogame.resource;
 
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+
 public class NaturalProducer implements IProducer {
 
-	private static final long serialVersionUID = 1L;
 	private static NaturalProducer instance = null;
 
 	public static NaturalProducer getInstance() {
@@ -51,5 +54,18 @@ public class NaturalProducer implements IProducer {
 	public void setMaximumProductionRate(Double rate) {
 		throw new IllegalStateException(
 				"You cannot change the rate of production of the planet.");
+	}
+
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	public void writeExternal(ObjectOutput out) throws IOException {
+		// nothing to write
+	}
+
+	@Override
+	public void readExternal(ObjectInput in) throws IOException,
+			ClassNotFoundException {
+		// nothing to read
 	}
 }

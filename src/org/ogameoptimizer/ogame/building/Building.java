@@ -1,14 +1,15 @@
 package org.ogameoptimizer.ogame.building;
 
-import java.io.Serializable;
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
 
 import org.ogameoptimizer.ogame.Planet;
 
-public abstract class Building implements Serializable {
-	private static final long serialVersionUID = 1L;
-	private Integer level = 1;
-	private Planet planet = null;
+public abstract class Building implements Externalizable {
 
+	private Integer level = 1;
 	public Integer getLevel() {
 		return level;
 	}
@@ -17,6 +18,7 @@ public abstract class Building implements Serializable {
 		this.level = level;
 	}
 
+	private Planet planet = null;
 	public void setPlanet(Planet planet) {
 		this.planet = planet;
 	}
@@ -24,5 +26,17 @@ public abstract class Building implements Serializable {
 	public Planet getPlanet() {
 		return planet;
 	}
-
+	
+	@Override
+	public void writeExternal(ObjectOutput out) throws IOException {
+		out.writeInt(level);
+		out.writeObject(planet);
+	}
+	
+	@Override
+	public void readExternal(ObjectInput in) throws IOException,
+			ClassNotFoundException {
+		level = in.readInt();
+		planet = (Planet) in.readObject();
+	}
 }

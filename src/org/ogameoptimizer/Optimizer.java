@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -38,7 +39,7 @@ public class Optimizer extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("icon.png"));
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setPreferredSize(new Dimension(1000, 800));
-		
+
 		initMenu();
 
 		initUser();
@@ -53,21 +54,21 @@ public class Optimizer extends JFrame {
 		JMenuBar menubar = new JMenuBar();
 		JMenu fileMenu = new JMenu("File");
 		fileMenu.add(new AbstractAction("Save") {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				save(user);
 			}
 		});
 		fileMenu.add(new AbstractAction("Load") {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				user = readUser(user.getName());
+				user = read(user.getName());
 			}
 		});
 		menubar.add(fileMenu);
-		setJMenuBar(menubar );
+		setJMenuBar(menubar);
 	}
 
 	private void initUser() {
@@ -82,23 +83,23 @@ public class Optimizer extends JFrame {
 		Producer producer = new MetalMine();
 		producer.setPlanet(planet);
 		producer.setLevel(4);
-		planet.addBuilding(producer);
+		planet.constructBuilding(producer);
 
 		producer = new CrystalMine();
 		producer.setPlanet(planet);
 		producer.setLevel(2);
-		planet.addBuilding(producer);
+		planet.constructBuilding(producer);
 
 		producer = new DeuteriumMine();
 		producer.setPlanet(planet);
 		producer.setLevel(2);
 		producer.setMaximumProductionRate(0.6);
-		planet.addBuilding(producer);
+		planet.constructBuilding(producer);
 
 		producer = new SolarCentral();
 		producer.setPlanet(planet);
 		producer.setLevel(4);
-		planet.addBuilding(producer);
+		planet.constructBuilding(producer);
 
 		planet.setName("test-planet");
 
@@ -107,8 +108,9 @@ public class Optimizer extends JFrame {
 
 	public void save(User user) {
 		try {
-			FileOutputStream fos = new FileOutputStream("user."
-					+ user.getName() + ".txt");
+			File file = new File("save/"+user.getName());
+			file.getParentFile().mkdirs();
+			FileOutputStream fos = new FileOutputStream(file);
 			ObjectOutputStream out = new ObjectOutputStream(fos);
 			out.writeObject(user);
 			out.close();
@@ -117,10 +119,10 @@ public class Optimizer extends JFrame {
 		}
 	}
 
-	public User readUser(String name) {
+	public User read(String name) {
 		User user = null;
 		try {
-			FileInputStream fis = new FileInputStream("user." + name + ".txt");
+			FileInputStream fis = new FileInputStream("save/"+name);
 			ObjectInputStream in = new ObjectInputStream(fis);
 			user = (User) in.readObject();
 			in.close();
