@@ -31,7 +31,6 @@ public class BuildingSetTest {
 		}
 
 		// the test
-		assertEquals(classes.size(), set.toBuildingArray().length);
 		for (Class<?> clazz : classes) {
 			boolean isPresent = false;
 			for (Building building : set) {

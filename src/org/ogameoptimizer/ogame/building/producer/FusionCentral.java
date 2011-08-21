@@ -1,9 +1,8 @@
-package org.ogameoptimizer.ogame.building.resources;
+package org.ogameoptimizer.ogame.building.producer;
 
 import org.ogameoptimizer.ogame.resource.ResourceSet;
 
-
-public class DeuteriumMine extends Producer {
+public class FusionCentral extends Producer {
 
 	@Override
 	public Long getProductionBaseForMetal() {
@@ -17,9 +16,7 @@ public class DeuteriumMine extends Producer {
 
 	@Override
 	public Long getProductionBaseForDeuterium() {
-		return (long) Math.floor((double) 10 * getLevel()
-				* Math.pow(1.1, getLevel())
-				* (-0.002 * getPlanet().getTemperatureMax() + 1.28));
+		return (long) Math.floor(-10 * getLevel() * Math.pow(1.1, getLevel()));
 	}
 
 	@Override
@@ -29,15 +26,18 @@ public class DeuteriumMine extends Producer {
 
 	@Override
 	public Long getProductionBaseForEnergy() {
-		return (long) Math.floor(-20 * getLevel() * Math.pow(1.1, getLevel()));
+		return (long) (30 * getLevel() * Math.pow(1.05 + getPlanet()
+				.getTechnologies().energy.getLevel() * 0.01, getLevel()));
 	}
 
 	@Override
 	public ResourceSet getNextLevelCost() {
 		ResourceSet cost = new ResourceSet();
-		cost.metal.setAmount((long) Math.floor(225 * Math.pow(1.5,
-				getLevel())));
-		cost.crystal.setAmount((long) Math.floor(75 * Math.pow(1.5,
+		cost.metal
+				.setAmount((long) Math.floor(900 * Math.pow(1.8, getLevel())));
+		cost.crystal.setAmount((long) Math.floor(360 * Math
+				.pow(1.8, getLevel())));
+		cost.deuterium.setAmount((long) Math.floor(180 * Math.pow(1.8,
 				getLevel())));
 		return cost;
 	}

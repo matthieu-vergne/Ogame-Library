@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 import org.ogameoptimizer.ogame.Planet;
+import org.ogameoptimizer.ogame.building.producer.DeuteriumMine;
+import org.ogameoptimizer.ogame.building.producer.Producer;
 import org.ogameoptimizer.ogame.resource.ResourceSet;
 
 public class DeuteriumMineTest extends ProducerTest {

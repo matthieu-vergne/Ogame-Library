@@ -15,6 +15,7 @@ import org.ogameoptimizer.ogame.Planet;
 import org.ogameoptimizer.ogame.Position;
 import org.ogameoptimizer.ogame.building.Building;
 import org.ogameoptimizer.ogame.building.BuildingTest;
+import org.ogameoptimizer.ogame.building.producer.Producer;
 
 public abstract class ProducerTest extends BuildingTest {
 

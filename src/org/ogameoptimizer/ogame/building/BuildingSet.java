@@ -12,16 +12,18 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.ogameoptimizer.ogame.Planet;
-import org.ogameoptimizer.ogame.building.resources.CrystalMine;
-import org.ogameoptimizer.ogame.building.resources.DeuteriumMine;
-import org.ogameoptimizer.ogame.building.resources.MetalMine;
-import org.ogameoptimizer.ogame.building.resources.SolarCentral;
+import org.ogameoptimizer.ogame.building.producer.CrystalMine;
+import org.ogameoptimizer.ogame.building.producer.DeuteriumMine;
+import org.ogameoptimizer.ogame.building.producer.FusionCentral;
+import org.ogameoptimizer.ogame.building.producer.MetalMine;
+import org.ogameoptimizer.ogame.building.producer.SolarCentral;
 
 public class BuildingSet implements Iterable<Building>, Externalizable {
 	public final SolarCentral solarCentral = new SolarCentral();
 	public final MetalMine metalMine = new MetalMine();
 	public final CrystalMine crystalMine = new CrystalMine();
 	public final DeuteriumMine deuteriumMine = new DeuteriumMine();
+	public final FusionCentral fusionCentral = new FusionCentral();
 
 	public Building[] toBuildingArray() {
 		Collection<Building> buildings = new ArrayList<Building>();
@@ -86,12 +88,19 @@ public class BuildingSet implements Iterable<Building>, Externalizable {
 	public void writeExternal(ObjectOutput out) throws IOException {
 		out.writeInt(solarCentral.getLevel());
 		out.writeDouble(solarCentral.getMaximumProductionRate());
+		
 		out.writeInt(metalMine.getLevel());
 		out.writeDouble(metalMine.getMaximumProductionRate());
+		
 		out.writeInt(crystalMine.getLevel());
 		out.writeDouble(crystalMine.getMaximumProductionRate());
+		
 		out.writeInt(deuteriumMine.getLevel());
 		out.writeDouble(deuteriumMine.getMaximumProductionRate());
+		
+		out.writeInt(fusionCentral.getLevel());
+		out.writeDouble(fusionCentral.getMaximumProductionRate());
+		
 		out.writeObject(getPlanet());
 	}
 
@@ -100,12 +109,19 @@ public class BuildingSet implements Iterable<Building>, Externalizable {
 			ClassNotFoundException {
 		solarCentral.setLevel(in.readInt());
 		solarCentral.setMaximumProductionRate(in.readDouble());
+		
 		metalMine.setLevel(in.readInt());
 		metalMine.setMaximumProductionRate(in.readDouble());
+		
 		crystalMine.setLevel(in.readInt());
 		crystalMine.setMaximumProductionRate(in.readDouble());
+		
 		deuteriumMine.setLevel(in.readInt());
 		deuteriumMine.setMaximumProductionRate(in.readDouble());
+		
+		fusionCentral.setLevel(in.readInt());
+		fusionCentral.setMaximumProductionRate(in.readDouble());
+		
 		setPlanet((Planet) in.readObject());
 	}
 }

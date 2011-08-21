@@ -3,7 +3,7 @@ package org.ogameoptimizer.gui.tree;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 import org.ogameoptimizer.ogame.building.Building;
-import org.ogameoptimizer.ogame.building.resources.Producer;
+import org.ogameoptimizer.ogame.building.producer.Producer;
 
 @SuppressWarnings("serial")
 public class BuildingNode extends DefaultMutableTreeNode {

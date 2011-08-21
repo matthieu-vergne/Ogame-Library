@@ -1,18 +1,19 @@
-package org.ogameoptimizer.ogame.building.resources;
+package org.ogameoptimizer.ogame.building.producer;
 
 import org.ogameoptimizer.ogame.resource.ResourceSet;
 
-public class CrystalMine extends Producer {
+
+public class MetalMine extends Producer {
 
 	@Override
 	public Long getProductionBaseForMetal() {
-		return 0L;
+		return (long) Math.floor((double) 30 * getLevel()
+				* Math.pow(1.1, getLevel()));
 	}
 
 	@Override
 	public Long getProductionBaseForCrystal() {
-		return (long) Math.floor((double) 20 * getLevel()
-				* Math.pow(1.1, getLevel()));
+		return 0L;
 	}
 
 	@Override
@@ -33,9 +34,9 @@ public class CrystalMine extends Producer {
 	@Override
 	public ResourceSet getNextLevelCost() {
 		ResourceSet cost = new ResourceSet();
-		cost.metal.setAmount((long) Math.floor(48 * Math.pow(1.6,
+		cost.metal.setAmount((long) Math.floor(60 * Math.pow(1.5,
 				getLevel())));
-		cost.crystal.setAmount((long) Math.floor(24 * Math.pow(1.6,
+		cost.crystal.setAmount((long) Math.floor(15 * Math.pow(1.5,
 				getLevel())));
 		return cost;
 	}

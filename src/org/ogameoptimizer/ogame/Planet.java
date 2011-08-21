@@ -9,7 +9,7 @@ import java.util.Collection;
 
 import org.ogameoptimizer.ogame.building.Building;
 import org.ogameoptimizer.ogame.building.BuildingSet;
-import org.ogameoptimizer.ogame.building.resources.Producer;
+import org.ogameoptimizer.ogame.building.producer.Producer;
 import org.ogameoptimizer.ogame.resource.Antimatter;
 import org.ogameoptimizer.ogame.resource.Crystal;
 import org.ogameoptimizer.ogame.resource.Deuterium;

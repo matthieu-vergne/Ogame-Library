@@ -3,6 +3,8 @@ package org.ogameoptimizer.ogame.building.resources;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+import org.ogameoptimizer.ogame.building.producer.CrystalMine;
+import org.ogameoptimizer.ogame.building.producer.Producer;
 import org.ogameoptimizer.ogame.resource.ResourceSet;
 
 public class CrystalMineTest extends ProducerTest {
