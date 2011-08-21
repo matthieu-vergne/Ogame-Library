@@ -1,9 +1,3 @@
-Capacités des hangars de stockage
-
-    capacité de base : 100k (c'est le niveau 0, lorsqu'il n'y a pas de hangars)
-    niveaux suivants : 100k + 50k * arrondi inférieur(1,6^niveau)
-
-
 Production des satellites solaires
 
     arrondi inférieur [ (TempératureMax / 4) + 20 ] (avec un maximum de 50 ou 51 d'énergie par satellite)

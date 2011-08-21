@@ -27,6 +27,6 @@ public class GravitonTest extends TechnologyTest {
 			assertEquals(300000, (long) cost.energy.getAmount());
 		}
 		
-		// TODO complete with other data
+		// TODO complete with other levels
 	}
 }

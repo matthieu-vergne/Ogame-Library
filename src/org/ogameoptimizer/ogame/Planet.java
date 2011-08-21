@@ -19,6 +19,8 @@ import org.ogameoptimizer.ogame.resource.Metal;
 import org.ogameoptimizer.ogame.resource.NaturalProducer;
 import org.ogameoptimizer.ogame.technology.TechnologySet;
 
+//TODO create spaceships
+//TODO create defense
 public class Planet implements Externalizable {
 
 	/**

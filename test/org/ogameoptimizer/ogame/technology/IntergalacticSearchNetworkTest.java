@@ -26,6 +26,6 @@ public class IntergalacticSearchNetworkTest extends TechnologyTest {
 			assertEquals(0, (long) cost.energy.getAmount());
 		}
 
-		// TODO complete with other data
+		// TODO complete with other levels
 	}
 }

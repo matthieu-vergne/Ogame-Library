@@ -70,7 +70,7 @@ public class DeuteriumTankTest extends TankTest {
 	}
 
 	@Test
-	public void testCost() {
+	public void testCostFormula() {
 		DeuteriumTank stock = new DeuteriumTank();
 
 		{

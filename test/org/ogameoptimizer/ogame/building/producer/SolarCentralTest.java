@@ -44,5 +44,7 @@ public class SolarCentralTest extends ProducerTest {
 			assertEquals(0, (long) cost.antimatter.getAmount());
 			assertEquals(0, (long) cost.energy.getAmount());
 		}
+		
+		// TODO complete with other levels
 	}
 }

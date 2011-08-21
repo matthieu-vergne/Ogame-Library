@@ -70,7 +70,7 @@ public class MetalTankTest extends TankTest {
 	}
 
 	@Test
-	public void testCost() {
+	public void testCostFormula() {
 		MetalTank stock = new MetalTank();
 
 		{
