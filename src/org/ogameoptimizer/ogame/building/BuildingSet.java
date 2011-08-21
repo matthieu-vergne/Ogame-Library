@@ -31,6 +31,12 @@ public class BuildingSet implements Iterable<Building>, Externalizable {
 	public final CrystalStock crystalStock = new CrystalStock();
 	public final DeuteriumStock deuteriumStock = new DeuteriumStock();
 	public final RobotFactory robotFactory = new RobotFactory();
+	public final Dock dock = new Dock();
+	public final MissileSilo missileSilo = new MissileSilo();
+	public final NaniteFactory naniteFactory = new NaniteFactory();
+	public final ResearchLab researchLab = new ResearchLab();
+	public final SupplyDeposit supplyDeposit = new SupplyDeposit();
+	public final Terraformer terraformer = new Terraformer();
 
 	public Building[] toBuildingArray() {
 		Collection<Building> buildings = new ArrayList<Building>();
@@ -113,6 +119,15 @@ public class BuildingSet implements Iterable<Building>, Externalizable {
 		out.writeInt(deuteriumStock.getLevel());
 		
 		out.writeInt(robotFactory.getLevel());
+		out.writeInt(dock.getLevel());
+		out.writeInt(naniteFactory.getLevel());
+		out.writeInt(researchLab.getLevel());
+		out.writeInt(supplyDeposit.getLevel());
+		out.writeInt(terraformer.getLevel());
+		
+		out.writeInt(missileSilo.getLevel());
+		out.writeInt(missileSilo.getInterceptionMissileCount());
+		out.writeInt(missileSilo.getInterplanetaryMissileCount());
 
 		out.writeObject(getPlanet());
 	}
@@ -140,6 +155,15 @@ public class BuildingSet implements Iterable<Building>, Externalizable {
 		deuteriumStock.setLevel(in.readInt());
 		
 		robotFactory.setLevel(in.readInt());
+		dock.setLevel(in.readInt());
+		naniteFactory.setLevel(in.readInt());
+		researchLab.setLevel(in.readInt());
+		supplyDeposit.setLevel(in.readInt());
+		terraformer.setLevel(in.readInt());
+		
+		missileSilo.setLevel(in.readInt());
+		missileSilo.setInterceptionMissileCount(in.readInt());
+		missileSilo.setInterplanetaryMissileCount(in.readInt());
 
 		setPlanet((Planet) in.readObject());
 	}
