@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 import org.ogameoptimizer.ogame.Planet;
+import org.ogameoptimizer.ogame.resource.ResourceSet;
 
 public class DeuteriumMineTest extends ProducerTest {
 
@@ -45,5 +46,20 @@ public class DeuteriumMineTest extends ProducerTest {
 
 		mine.setLevel(15);
 		assertEquals(-1254, (long) mine.getProductionBaseForEnergy());
+	}
+
+	@Test
+	public void testCostFormula() {
+		DeuteriumMine mine = new DeuteriumMine();
+
+		{
+			mine.setLevel(3);
+			ResourceSet cost = mine.getNextLevelCost();
+			assertEquals(759, (long) cost.metal.getAmount());
+			assertEquals(253, (long) cost.crystal.getAmount());
+			assertEquals(0, (long) cost.deuterium.getAmount());
+			assertEquals(0, (long) cost.antimatter.getAmount());
+			assertEquals(0, (long) cost.energy.getAmount());
+		}
 	}
 }

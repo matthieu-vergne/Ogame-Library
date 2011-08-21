@@ -34,7 +34,7 @@ public class ResourceComponent extends JPanel {
 		}
 
 		{
-			value = new JFormattedTextField(resource.getActualAmount());
+			value = new JFormattedTextField(resource.getAmount());
 			value.setMinimumSize(new Dimension(100, 5));
 			value.addActionListener(new ActionListener() {
 
@@ -42,7 +42,7 @@ public class ResourceComponent extends JPanel {
 				public void actionPerformed(ActionEvent e) {
 					long newAmount = Long.parseLong(((JTextField) e.getSource())
 							.getText());
-					resource.setActualAmount(newAmount);
+					resource.setAmount(newAmount);
 				}
 			});
 			value.setPreferredSize(new Dimension(50, value.getPreferredSize().height));

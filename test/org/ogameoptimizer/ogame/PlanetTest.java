@@ -65,11 +65,11 @@ public class PlanetTest {
 		planet.getBuildings().metalMine.setLevel(5);
 		planet.getBuildings().crystalMine.setLevel(4);
 		planet.getBuildings().solarCentral.setLevel(4);
-		planet.getMetal().setActualAmount(100L);
-		planet.getCrystal().setActualAmount(200L);
-		planet.getDeuterium().setActualAmount(300L);
-		planet.getAntimatter().setActualAmount(400L);
-		planet.getEnergy().setActualAmount(500L);
+		planet.getMetal().setAmount(100L);
+		planet.getCrystal().setAmount(200L);
+		planet.getDeuterium().setAmount(300L);
+		planet.getAntimatter().setAmount(400L);
+		planet.getEnergy().setAmount(500L);
 
 		try {
 			FileOutputStream fos = new FileOutputStream(file);
@@ -98,11 +98,11 @@ public class PlanetTest {
 		assertEquals(planet.getTemperatureMax(), planet2.getTemperatureMax());
 		assertEquals(planet.getTemperatureMin(), planet2.getTemperatureMin());
 		assertEquals(planet.getPosition(), planet2.getPosition());
-		assertEquals(planet.getMetal().getActualAmount(), planet2.getMetal().getActualAmount());
-		assertEquals(planet.getCrystal().getActualAmount(), planet2.getCrystal().getActualAmount());
-		assertEquals(planet.getDeuterium().getActualAmount(), planet2.getDeuterium().getActualAmount());
-		assertEquals(planet.getAntimatter().getActualAmount(), planet2.getAntimatter().getActualAmount());
-		assertEquals(planet.getEnergy().getActualAmount(), planet2.getEnergy().getActualAmount());
+		assertEquals(planet.getMetal().getAmount(), planet2.getMetal().getAmount());
+		assertEquals(planet.getCrystal().getAmount(), planet2.getCrystal().getAmount());
+		assertEquals(planet.getDeuterium().getAmount(), planet2.getDeuterium().getAmount());
+		assertEquals(planet.getAntimatter().getAmount(), planet2.getAntimatter().getAmount());
+		assertEquals(planet.getEnergy().getAmount(), planet2.getEnergy().getAmount());
 		assertEquals(planet.getOwner(), planet2.getOwner());
 		assertNotNull(planet2.getBuildings());
 		assertEquals(planet.getBuildings().toBuildingArray().length,

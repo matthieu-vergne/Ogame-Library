@@ -11,9 +11,9 @@ public abstract class ResourceTest {
 	@Test
 	public void testActualAmount() {
 		Resource resource = createResource();
-		assertEquals(0, (long) resource.getActualAmount());
+		assertEquals(0, (long) resource.getAmount());
 
-		resource.setActualAmount(500L);
-		assertEquals(500, (long) resource.getActualAmount());
+		resource.setAmount(500L);
+		assertEquals(500, (long) resource.getAmount());
 	}
 }

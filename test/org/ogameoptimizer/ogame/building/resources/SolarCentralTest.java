@@ -3,6 +3,7 @@ package org.ogameoptimizer.ogame.building.resources;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+import org.ogameoptimizer.ogame.resource.ResourceSet;
 
 public class SolarCentralTest extends ProducerTest {
 
@@ -26,5 +27,20 @@ public class SolarCentralTest extends ProducerTest {
 
 		central.setLevel(15);
 		assertEquals(1253, (long) central.getProductionBaseForEnergy());
+	}
+
+	@Test
+	public void testCostFormula() {
+		SolarCentral central = new SolarCentral();
+
+		{
+			central.setLevel(7);
+			ResourceSet cost = central.getNextLevelCost();
+			assertEquals(1281, (long) cost.metal.getAmount());
+			assertEquals(512, (long) cost.crystal.getAmount());
+			assertEquals(0, (long) cost.deuterium.getAmount());
+			assertEquals(0, (long) cost.antimatter.getAmount());
+			assertEquals(0, (long) cost.energy.getAmount());
+		}
 	}
 }

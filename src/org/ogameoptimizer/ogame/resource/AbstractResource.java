@@ -9,12 +9,12 @@ public abstract class AbstractResource implements Resource {
 	private Long actualAmount = 0L;
 
 	@Override
-	public Long getActualAmount() {
+	public Long getAmount() {
 		return actualAmount;
 	}
 
 	@Override
-	public void setActualAmount(Long actualAmount) {
+	public void setAmount(Long actualAmount) {
 		this.actualAmount = actualAmount;
 	}
 

@@ -1,5 +1,7 @@
 package org.ogameoptimizer.ogame.building.resources;
 
+import org.ogameoptimizer.ogame.resource.ResourceSet;
+
 public class SolarCentral extends Producer {
 
 	@Override
@@ -34,5 +36,15 @@ public class SolarCentral extends Producer {
 	@Override
 	public Double getActualProductionRate() {
 		return getMaximumProductionRate();
+	}
+
+	@Override
+	public ResourceSet getNextLevelCost() {
+		ResourceSet cost = new ResourceSet();
+		cost.metal.setAmount((long) Math.floor(75 * Math.pow(1.5,
+				getLevel())));
+		cost.crystal.setAmount((long) Math.floor(30 * Math.pow(1.5,
+				getLevel())));
+		return cost;
 	}
 }

@@ -47,6 +47,6 @@ public abstract class AbstractResourceTest extends ResourceTest {
 		file.delete();
 		
 		assertNotNull(resource2);
-		assertEquals(resource.getActualAmount(), resource2.getActualAmount());
+		assertEquals(resource.getAmount(), resource2.getAmount());
 	}
 }

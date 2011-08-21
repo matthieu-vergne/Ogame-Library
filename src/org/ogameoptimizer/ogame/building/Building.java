@@ -6,6 +6,7 @@ import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
 import org.ogameoptimizer.ogame.Planet;
+import org.ogameoptimizer.ogame.resource.ResourceSet;
 
 public abstract class Building implements Externalizable {
 
@@ -39,4 +40,6 @@ public abstract class Building implements Externalizable {
 		level = in.readInt();
 		planet = (Planet) in.readObject();
 	}
+	
+	abstract public ResourceSet getNextLevelCost();
 }

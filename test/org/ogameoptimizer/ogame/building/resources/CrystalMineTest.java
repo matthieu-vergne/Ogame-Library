@@ -3,6 +3,7 @@ package org.ogameoptimizer.ogame.building.resources;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+import org.ogameoptimizer.ogame.resource.ResourceSet;
 
 public class CrystalMineTest extends ProducerTest {
 
@@ -43,5 +44,20 @@ public class CrystalMineTest extends ProducerTest {
 
 		mine.setLevel(15);
 		assertEquals(-627, (long) mine.getProductionBaseForEnergy());
+	}
+
+	@Test
+	public void testCostFormula() {
+		CrystalMine mine = new CrystalMine();
+
+		{
+			mine.setLevel(4);
+			ResourceSet cost = mine.getNextLevelCost();
+			assertEquals(314, (long) cost.metal.getAmount());
+			assertEquals(157, (long) cost.crystal.getAmount());
+			assertEquals(0, (long) cost.deuterium.getAmount());
+			assertEquals(0, (long) cost.antimatter.getAmount());
+			assertEquals(0, (long) cost.energy.getAmount());
+		}
 	}
 }

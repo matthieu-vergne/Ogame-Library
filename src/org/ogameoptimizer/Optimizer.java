@@ -70,10 +70,10 @@ public class Optimizer extends JFrame {
 		user.setName("test-user");
 
 		Planet planet = new Planet();
-		planet.getMetal().setActualAmount(10L);
-		planet.getCrystal().setActualAmount(20L);
-		planet.getDeuterium().setActualAmount(30L);
-		planet.getEnergy().setActualAmount(10L);
+		planet.getMetal().setAmount(10L);
+		planet.getCrystal().setAmount(20L);
+		planet.getDeuterium().setAmount(30L);
+		planet.getEnergy().setAmount(10L);
 
 		planet.getBuildings().metalMine.setLevel(4);
 		planet.getBuildings().crystalMine.setLevel(4);

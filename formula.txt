@@ -1,0 +1,291 @@
+Productions par heure
+
+    Centrale électrique de fusion :
+    => Production =
+    30 * niveau de la Centrale de Fusion* (1,05 + niveau de la technologie Energie * 0,01) ^ Niveau de la Centrale de Fusion
+
+
+Consommations
+
+    Centrale électrique de fusion :
+    => Consommation de deutérium = 10 * niveau * 1,1^niveau
+
+
+
+Capacités des hangars de stockage
+
+    capacité de base : 100k (c'est le niveau 0, lorsqu'il n'y a pas de hangars)
+    niveaux suivants : 100k + 50k * arrondi inférieur(1,6^niveau)
+
+
+Production des satellites solaires
+
+    arrondi inférieur [ (TempératureMax / 4) + 20 ] (avec un maximum de 50 ou 51 d'énergie par satellite)
+
+    Planètes 1/2/3 : température max autour de 120-125° (satellite solaire produisant 50 ou 51)
+    Planètes 4/5/6 : température max autour de 65° (satellite solaire produisant 35)
+    Planètes 7/8/9 : température max autour de 35° (satellite solaire produisant 28-30)
+    Planètes 10/11/12 : température max autour de 15° (satellite solaire produisant 23-25)
+    Planètes 13/14/15 : température max autour de -40° (satellite solaire produisant très très peu)
+
+    Chaque planète de chaque groupe a une température réelle qui est située aléatoirement à quelques degrés de la température théorique. On peut avoir une planète 8 à 40° par exemple.
+
+
+Champ de ruines
+
+    30% du métal et cristal constituant les vaisseaux détruits lors de la bataille.
+
+
+Taille moyenne des planètes
+
+    Elle est déterminée plus ou moins aléatoirement de la manière suivante.
+    Attention : Entre la limite inférieure et la limite supérieure se trouvent seulement 80% des valeurs. Le reste se place en dehors de ces valeurs.
+    Cela signifie qu'il y a 80% de chances de trouver une planète comprise entre ces 2 limites, et donc ça fait 20% de chances de trouver soit plus petit, soit plus grand !
+
+    Position-------Taille moyenne-----Limite inférieure--------Limite supérieure
+    1 à 3 ---------- 55 ------- 45 ------ 80% --------- 70
+    4 à 6 --------- 215 ------ 120 ----- 80% --------- 310
+    7 à 9 ----------150-------105 ------80%--------- 195
+    10 à 12 -------100--------75 -------80%--------- 125
+    13 à 15 -------125--------60 -------80%--------- 190
+
+    Coloniser les planètes 4-5-6 augmente donc la chance d'avoir une grosse planète.
+    Ce tableau n'exclut pas qu'une planète de 30 cases puisse être trouvée en position 4, ou une 215 cases en position 15 !
+
+
+Coûts de l'amélioration des bâtiments et recherches par niveau
+
+Chaque formule donne le prix du bâtiment en question en fonction du niveau demandé.
+
+    Mine de métal : 60 * 1,5^(niveau-1) métal et 15 * 1,5^(niveau-1) cristal
+
+    Mine de cristal : 48 * 1,6^(niveau-1) métal et 24 * 1,6^(niveau-1) cristal
+
+    Synthétiseur de deutérium : 225*1,5^(niveau-1) métal et 75 * 1,5^(niveau-1) cristal
+
+    Centrale électrique solaire : 75 * 1,5^(niveau-1) métal et 30 * 1,5^(niveau-1) cristal
+
+    Centrale électrique de fusion : 900 * 1,8^(niveau-1) métal et 360 * 1,8^(niveau-1) cristal et 180 * 1,8^(niveau-1) deutérium
+
+
+    Technologie graviton : *3 par niveau (niveau 1 : 300K d'énergie, sachant qu'il est inutile actuellement de passer au niveaux supérieurs)
+
+
+    Tous les autres recherches et bâtiments : *2^(niveau-1)
+
+
+Coûts cumulés d'un bâtiment en fonction du niveau souhaité
+
+    Mine de métal : 60 * (1 - 1,5^niveau) / (-0,5) métal et 15 * (1 - 1,5^niveau) / ( - 0,5) cristal
+
+    Mine de cristal : 48 * (1 - 1,6^niveau) / (-0,6) métal et 24 * (1 - 1,6^niveau) / (-0,6) cristal
+
+    Synthétiseur de deutérium : 225 * (1 - 1,5^niveau) / (-0,5) métal et 75 * (1 - 1,5^niveau) / (-0,5) cristal
+
+    Centrale électrique solaire : 75 * (1 - 1,5^niveau) / (-0,5) métal et 30 * (1 - 1,5^niveau) / (-0,5) cristal
+
+    Centrale électrique de fusion : 900 * (1 - 1,8^niveau) / ( -0,8 ) métal et 360 * (1 - 1,8^niveau) / ( -0,8 ) cristal
+
+    Pour tous les autres bâtiments : (coûts niveau 1) * - (1 - 2^niveau)
+
+Exemple 1 : je n'ai pas de centrale de fusion, et il m'en faut une niveau 6. Combien dois-je fournir de ressources au total ?
+Donc la réponse de l'exemple est : 900 * (1 - 1,8^6) / (-0,8 ) métal et 360 * (1 - 1,8^6) / ( -0,8 ) cristal. Soit 37.138 métal et 14.855 cristal
+
+Exemple 2 :
+j'ai déjà un bâtiment de niveau 6, je veux savoir combien coûtera l'upgrade jusqu'au niveau 9.
+Réponse : il suffit de faire : (coûts cumulés jusqu'au niveau souhaité) - (coûts cumulés du niveau actuel)
+En fait, la partie avant le - correspond à ce qu'il faut payer pour aller du niveau 1 à X (ici 9), et la partie après le - correspond à ce que tu as déjà payé quand tu es au niveau Y (ici 6), sachant que Y < X.
+
+
+
+Temps de construction des bâtiments
+
+    [ (cristal + métal) / 5.000 ] * [ 2 / (1 + niveau Usine de Robot) ] * 0,5^niveau Nanites
+
+Comme on peut le voir, l'usine de nanites divise par 2 les temps de construction des bâtiments, vaisseaux et défenses, et ce à chaque niveau.
+
+
+Temps de construction des vaisseaux et défenses
+
+    [ (cristal + métal) / 5.000 ] * [ 2 / (1 + niveau Chantier Spatial) ] * 0,5^niveau Nanites
+
+
+Temps de recherche
+
+    (métal + cristal) / (1000 * (1 + niveau labo + n meilleurs niveaux des labos autres que le labo de la planète effectuant la recherche))
+    Où n est le niveau du Réseau de recherche intergalactique et niveau labo est le niveau du laboratoire ou vous effectuez la recherche.
+
+
+Nombre maximal de cases d'une lune
+
+    ( ( Diamètre de la Lune ) / 1.000 ) ²
+
+
+Le diamètre de la lune aparait dans le menu "Galaxie" sous le symbole S, T étant la températeure minimale de la lune.
+
+Par exemple :
+Une lune a un diamètre de 8774 km.
+8774 / 1000 = 8.774
+8.774² = 76.98 environ.
+
+On arrondit à l'unité inférieure. Cette lune fera donc 76 cases au maximum.
+
+
+Attaque de lune avec une (des) Etoile(s) de la mort
+
+    Le pourcentage de chance de destruction de la lune est :
+    ( 100 - Racine(taille de la lune) ) * Racine(nombre d'EDLM attaquantes)
+
+    Le pourcentage de chance de destruction de l'EDLM est :
+    Racine(Taille de la Lune) / 2
+
+
+Portée des phalanges de capteur
+
+    (niveau de la phalange de capteur)² - 1
+
+
+Portée des missiles interplanétaires
+
+    (2 * niveau Réacteur à Impulsion) - 1
+
+
+
+Vitesse des missiles interplanétaires
+
+    Ils mettent 30 secondes pour frapper dans le même système solaire que celui d'où ils sont lancés et il mettent 1 minutes de plus par sytème.
+    MI en 1 : 200 : XX pour frapper en 1 : 210 : XX ils mettront :
+    30 + 10 * 60 = 630 secondes soit 10 minutes et 30 secondes.
+
+
+
+Durées de vol (en secondes)
+
+% vitesse = % de vitesse d'envoi de la flotte
+vitesse du vaisseau = vitesse du vaisseau le plus lent dans la flotte ; le niveau de technologie du réacteur est déjà compris dans ce nombre (ce n'est pas la vitesse de base qu'il faut utiliser ici ! )
+
+    jusqu'à son propre champ de ruines :
+    10 + [ 35 000 / (% vitesse) * Racine (5 000 / vitesse du vaisseau) ]
+
+    Dans son système solaire :
+    10 + [ 35 000 / (% vitesse) * Racine ((1 000 000 + distance absolue entre les planètes * 5 000) / vitesse du vaisseau) ]
+
+    Dans sa galaxie :
+    10 + [ 35 000 / (% vitesse) * Racine ((2 700 000 + (écart de systèmes) * 95 000) / vitesse du vaisseau) ]
+
+    Dans une autre galaxie :
+    10 + [ 35 000 / (% vitesse) * Racine (écart de galaxies * 20 000 000 / vitesse du vaisseau) ]
+
+
+
+Calcul de la vitesse des vaisseaux
+
+    vitesse de base + niveau tech * (vitesse de base * ratio tech / 100)
+
+Où:
+- vitesse de base = La vitesse de base
+
+- niveau tech = le niveau de la tech qui rentre en compte pour la vitesse du vaisseau (visible dans la page "Technologie", sauf pour les Bo et les Clé, qui a un certain niveau utilisent une autre tech)
+
+- ratio tech = le ratio multiplicateur de la tech (combustion : 10, impulsion : 20, propulsion : 30)
+
+Consommations de deutérium
+
+conso = consommation en carburant des vaisseaux
+% vitesse = % de vitesse d'envoi de la flotte
+
+    Dans son système solaire :
+    1 + arrondi inférieur [conso * ((1.000 + 5 * distance absolue entre les planètes) / 35.000) * (%vitesse / 100 + 1)^2 ]
+
+    Exemple :
+    1 GT de 3:22:1 vers 3:22:2 à 80%
+    - conso --> 50 par GT => 1 * 50 = 50
+    - distance --> | 1 - 2 | = 1
+    - %vitesse = 80
+    1 + arrondi inférieur [ 50 * ((1.000 + 5 * 1) / 35.000) * (80 / 100 + 1)^2 ]
+    1 + arrondi inférieur [ 50 * 0,028714286 * 3,24 ]
+    1 + arrondi inférieur [ 5,74284 ]
+    1 + 5
+    = 6
+
+    Entre systèmes solaires :
+    1 + arrondi inférieur [ conso * ((2.700 + 95 * distance absolue entre les systèmes solaires) / 35.000) * (%vitesse / 100 + 1)^2 ]
+
+    Entre galaxies :
+    1 + arrondi inférieur [ conso * ((4 * distance absolue entre les galaxies) / 7) * (%vitesse / 100 + 1)^2 ]
+
+
+Gains sur les temps de vols avec les recherches
+
+Il faut augmenter les technologies de propulsion propre au vaisseau que l'on veut rendre plus rapide. Le gain de vitesse se fera comme suit :
+
+    +10% de la vitesse de base par niveau de réacteur à combustion interne
+    (pour les petits transporteurs, les grands transporteurs, les chasseurs légers, les recycleurs et les sondes d'espionnage)
+
+    +20% de la vitesse de base par niveau de réacteur à impulsion
+    (pour les chasseurs lourds, les croiseurs, les vaisseaux de colonisation, les bombardiers et à partir du niveau 5, les petits transporteurs)
+
+    +30% de la vitesse de base par niveau de propulsion hyperespace
+    (pour les vaisseaux de bataille, les destructeurs, les étoiles de la mort et à partir du niveau 8, les bombardiers)
+
+
+Points des classements
+
+    Classement général :
+    1.000 ressources dépensées <-> 1 point
+    Classement flotte :
+    1 vaisseau <-> 1 point
+    Classement recherche :
+    1 niveau de recherche <-> 1 point
+
+
+La protection des noobs
+
+    Cette protection ne s'applique que si le joueur a moins de 5000 points.
+    Imaginons deux joueurs, A est le défenseur et B l'attaquant. Le joueur A bénéficie de la protection des noobs.
+    Si B a un nombre de points compris entre 20% et 500% par rapport aux points de A, alors l'attaque est possible. Dans tous les autres cas, B ne peut pas attaquer A.
+    Ex :
+    Le joueur A a 2000 points.
+    20% de 2000 = 400
+    500% de 2000 = 10.000
+    Dans ce cas, si B a un nombre de points compris entre 400 et 10.000, il peut attaquer le joueur A ; dans tous les autres cas, l'attaque est impossible.
+
+
+L'espionnage
+
+    Plus le niveau d'espionnage de votre adversaire est élevé par rapport au votre, plus vous avez de sondes à envoyer pour combler la différence. [ (niveau d'espionnage adverse - votre niveau d'espionnage)² ] par exemple : (10 - 7)² = 3² = 9 (vous devez envoyer 9 sondes supplementaires pour combler les trois niveaux de différence).
+    Après avoir comblé la différence (ou si vous avez un niveau supérieur ou égal) cela fonctionne ainsi :
+
+    * 1 Sonde avec le même niveau
+    = Seules les ressources sont dévoilées ( Les ressources sont toujours montrées )
+
+    * 2 Sondes avec le même niveau( ou 2 Sondes ajoutées au nombre de sondes necessaires pour combler la différence de niveau ou 1 niveau de plus qu'a votre adversaire)
+    = La flotte est aussi dévoilée
+
+    * 3 Sondes avec le même niveau( ou 3 Sondes ajoutées au nombre de sondes necessaires pour combler la différence de niveau ou 2 niveau de plus qu'a votre adversaire)
+    = La défense est aussi dévoilée
+
+    * 5 Sondes avec le même niveau( ou 5 Sondes ajoutées au nombre de sondes necessaires pour combler la différence de niveau ou 3 niveau de plus qu'a votre adversaire)
+    = Les batiments sont aussi dévoilés
+
+    * 7 Sondes avec le même niveau( ou 7 Sondes ajoutées au nombre de sondes necessaires pour combler la différence de niveau ou 4 niveau de plus qu'a votre adversaire)
+    = Les technologies sont aussi dévoilées
+
+
+    Revenons sur l'exemple du début. Si vous voulez tout voir, vous devez envoyer 16 sondes( 9 + 7 = 16 ).
+
+
+Contre-espionnage
+
+    Différence négative (Le niveau d'espionnage de l'attaquant est supérieur à celui du défenseur) :
+    0,25 / (différence * -1 * 2)
+
+    Différence positive (Le niveau d'espionnage de l'attaquant est inférieur à celui du défenseur) :
+    0,25 * (différence * 2)
+
+    Note : ces formules ne sont pas exactes à 100%, car il y a une certaine part d'aléatoire en plus...
+
+    Explication :
+    Vous avez un niveau d'espionnage de 10, votre cible à un niveau de 8. C'est donc le cas numéro 1.
+    Ce qui donne 0,25 / ((8 - 10) * -1 * 2) soit 0,25 / 4 soit 0,0625.
+    La valeur de contre-espionnage sera donc 0,0625 * nombre de vaisseaux à quai au moment du scan de la cible.

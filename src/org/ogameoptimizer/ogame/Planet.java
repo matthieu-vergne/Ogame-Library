@@ -92,7 +92,7 @@ public class Planet implements Externalizable {
 			}
 		}
 
-		getEnergy().setActualAmount(producedEnergy - consumedEnergy);
+		getEnergy().setAmount(producedEnergy - consumedEnergy);
 
 		Double rate = Math.min(1, (double) producedEnergy / consumedEnergy);
 		for (IProducer producer : getProducers(true)) {
@@ -186,11 +186,11 @@ public class Planet implements Externalizable {
 		out.writeObject(position);
 		out.writeObject(owner);
 		out.writeUTF(name);
-		out.writeLong(metal.getActualAmount());
-		out.writeLong(crystal.getActualAmount());
-		out.writeLong(deuterium.getActualAmount());
-		out.writeLong(antimatter.getActualAmount());
-		out.writeLong(energy.getActualAmount());
+		out.writeLong(metal.getAmount());
+		out.writeLong(crystal.getAmount());
+		out.writeLong(deuterium.getAmount());
+		out.writeLong(antimatter.getAmount());
+		out.writeLong(energy.getAmount());
 		out.writeObject(buildings);
 	}
 
@@ -203,11 +203,11 @@ public class Planet implements Externalizable {
 		position = (Position) in.readObject();
 		owner = (User) in.readObject();
 		name = in.readUTF();
-		metal.setActualAmount(in.readLong());
-		crystal.setActualAmount(in.readLong());
-		deuterium.setActualAmount(in.readLong());
-		antimatter.setActualAmount(in.readLong());
-		energy.setActualAmount(in.readLong());
+		metal.setAmount(in.readLong());
+		crystal.setAmount(in.readLong());
+		deuterium.setAmount(in.readLong());
+		antimatter.setAmount(in.readLong());
+		energy.setAmount(in.readLong());
 		buildings = (BuildingSet) in.readObject();
 	}
 }

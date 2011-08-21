@@ -76,11 +76,11 @@ public class UserTest {
 			planet.getBuildings().metalMine.setLevel(5);
 			planet.getBuildings().crystalMine.setLevel(5);
 			planet.getBuildings().solarCentral.setLevel(5);
-			planet.getMetal().setActualAmount(100L);
-			planet.getCrystal().setActualAmount(200L);
-			planet.getDeuterium().setActualAmount(300L);
-			planet.getAntimatter().setActualAmount(400L);
-			planet.getEnergy().setActualAmount(500L);
+			planet.getMetal().setAmount(100L);
+			planet.getCrystal().setAmount(200L);
+			planet.getDeuterium().setAmount(300L);
+			planet.getAntimatter().setAmount(400L);
+			planet.getEnergy().setAmount(500L);
 			user.acquirePlanet(planet);
 		}
 
@@ -95,11 +95,11 @@ public class UserTest {
 			planet.getBuildings().crystalMine.setLevel(4);
 			planet.getBuildings().deuteriumMine.setLevel(3);
 			planet.getBuildings().solarCentral.setLevel(6);
-			planet.getMetal().setActualAmount(100L);
-			planet.getCrystal().setActualAmount(200L);
-			planet.getDeuterium().setActualAmount(300L);
-			planet.getAntimatter().setActualAmount(0L);
-			planet.getEnergy().setActualAmount(500L);
+			planet.getMetal().setAmount(100L);
+			planet.getCrystal().setAmount(200L);
+			planet.getDeuterium().setAmount(300L);
+			planet.getAntimatter().setAmount(0L);
+			planet.getEnergy().setAmount(500L);
 			user.acquirePlanet(planet);
 		}
 
