@@ -83,6 +83,16 @@ public class CrystalTankTest extends TankTest {
 			assertEquals(0, (long) cost.energy.getAmount());
 		}
 
+		{
+			stock.setLevel(1);
+			ResourceSet cost = stock.getNextLevelCost();
+			assertEquals(2000, (long) cost.metal.getAmount());
+			assertEquals(1000, (long) cost.crystal.getAmount());
+			assertEquals(0, (long) cost.deuterium.getAmount());
+			assertEquals(0, (long) cost.antimatter.getAmount());
+			assertEquals(0, (long) cost.energy.getAmount());
+		}
+
 		// TODO complete with other levels
 	}
 }

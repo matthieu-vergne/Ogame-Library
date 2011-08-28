@@ -27,6 +27,16 @@ public class LazerTest extends TechnologyTest {
 			assertEquals(0, (long) cost.energy.getAmount());
 		}
 		
+		{
+			technology.setLevel(6);
+			ResourceSet cost = technology.getNextLevelCost();
+			assertEquals(12800, (long) cost.metal.getAmount());
+			assertEquals(6400, (long) cost.crystal.getAmount());
+			assertEquals(0, (long) cost.deuterium.getAmount());
+			assertEquals(0, (long) cost.antimatter.getAmount());
+			assertEquals(0, (long) cost.energy.getAmount());
+		}
+		
 		// TODO complete with other levels
 	}
 }

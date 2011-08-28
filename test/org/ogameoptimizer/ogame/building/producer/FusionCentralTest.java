@@ -65,6 +65,16 @@ public class FusionCentralTest extends ProducerTest {
 			assertEquals(0, (long) cost.antimatter.getAmount());
 			assertEquals(0, (long) cost.energy.getAmount());
 		}
+
+		{
+			central.setLevel(3);
+			ResourceSet cost = central.getNextLevelCost();
+			assertEquals(5248, (long) cost.metal.getAmount());
+			assertEquals(2099, (long) cost.crystal.getAmount());
+			assertEquals(1049, (long) cost.deuterium.getAmount());
+			assertEquals(0, (long) cost.antimatter.getAmount());
+			assertEquals(0, (long) cost.energy.getAmount());
+		}
 		
 		// TODO complete with other levels
 	}

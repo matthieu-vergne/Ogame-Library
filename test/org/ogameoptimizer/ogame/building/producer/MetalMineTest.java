@@ -72,6 +72,14 @@ public class MetalMineTest extends ProducerTest {
 			assertEquals(0, (long) cost.energy.getAmount());
 		}
 		
-		// TODO complete with other levels
+		{
+			mine.setLevel(13);
+			ResourceSet cost = mine.getNextLevelCost();
+			assertEquals(11677, (long) cost.metal.getAmount());
+			assertEquals(2919, (long) cost.crystal.getAmount());
+			assertEquals(0, (long) cost.deuterium.getAmount());
+			assertEquals(0, (long) cost.antimatter.getAmount());
+			assertEquals(0, (long) cost.energy.getAmount());
+		}
 	}
 }

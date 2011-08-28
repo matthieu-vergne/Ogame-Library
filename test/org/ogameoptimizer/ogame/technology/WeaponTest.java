@@ -27,6 +27,16 @@ public class WeaponTest extends TechnologyTest {
 			assertEquals(0, (long) cost.energy.getAmount());
 		}
 		
+		{
+			technology.setLevel(3);
+			ResourceSet cost = technology.getNextLevelCost();
+			assertEquals(6400, (long) cost.metal.getAmount());
+			assertEquals(1600, (long) cost.crystal.getAmount());
+			assertEquals(0, (long) cost.deuterium.getAmount());
+			assertEquals(0, (long) cost.antimatter.getAmount());
+			assertEquals(0, (long) cost.energy.getAmount());
+		}
+		
 		// TODO complete with other levels
 	}
 }

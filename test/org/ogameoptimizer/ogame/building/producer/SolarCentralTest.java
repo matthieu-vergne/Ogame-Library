@@ -44,6 +44,16 @@ public class SolarCentralTest extends ProducerTest {
 			assertEquals(0, (long) cost.antimatter.getAmount());
 			assertEquals(0, (long) cost.energy.getAmount());
 		}
+
+		{
+			central.setLevel(13);
+			ResourceSet cost = central.getNextLevelCost();
+			assertEquals(14596, (long) cost.metal.getAmount());
+			assertEquals(5838, (long) cost.crystal.getAmount());
+			assertEquals(0, (long) cost.deuterium.getAmount());
+			assertEquals(0, (long) cost.antimatter.getAmount());
+			assertEquals(0, (long) cost.energy.getAmount());
+		}
 		
 		// TODO complete with other levels
 	}

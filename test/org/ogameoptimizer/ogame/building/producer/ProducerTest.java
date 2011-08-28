@@ -16,10 +16,18 @@ import org.ogameoptimizer.ogame.Position;
 import org.ogameoptimizer.ogame.building.Building;
 import org.ogameoptimizer.ogame.building.BuildingTest;
 import org.ogameoptimizer.ogame.building.producer.Producer;
+import org.ogameoptimizer.ogame.resource.IProducerTest;
 
 public abstract class ProducerTest extends BuildingTest {
 
 	abstract public Producer createProducer();
+	
+	class IProducer extends IProducerTest {
+		@Override
+		public org.ogameoptimizer.ogame.resource.IProducer createIProducer() {
+			return createProducer();
+		}
+	}
 
 	@Override
 	public Building createBuilding() {
