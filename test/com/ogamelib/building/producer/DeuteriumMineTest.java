@@ -1,12 +1,11 @@
 package com.ogamelib.building.producer;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
 import com.ogamelib.Planet;
-import com.ogamelib.building.producer.DeuteriumMine;
-import com.ogamelib.building.producer.Producer;
+import com.ogamelib.Position;
 import com.ogamelib.resource.ResourceSet;
 
 public class DeuteriumMineTest extends ProducerTest {
@@ -19,7 +18,7 @@ public class DeuteriumMineTest extends ProducerTest {
 	@Test
 	public void testProductionFormula() {
 		DeuteriumMine mine = new DeuteriumMine();
-		mine.setPlanet(new Planet());
+		mine.setPlanet(new Planet(12800L, -32, 8, new Position(4, 358, 12)));
 
 		mine.setLevel(1);
 		assertEquals(15, (long) mine.getProductionBaseForDeuterium());

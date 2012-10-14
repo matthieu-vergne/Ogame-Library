@@ -23,20 +23,10 @@ import com.ogamelib.technology.TechnologySet;
 //TODO create defense
 public class Planet implements Externalizable {
 
-	/**
-	 * Create a basic planet :
-	 * <ul>
-	 * <li>with a diameter of 12.800km</li>
-	 * <li>minimum temperature of -32�C</li>
-	 * <li>average temperature of 8�C</li>
-	 * <li>at the position [4:358:12]</li>
-	 * </ul>
-	 * This data is an example of mother planet.
-	 */
 	public Planet() {
-		this(12800L, -32, 8, new Position(4, 358, 12));
+		this(0L, 0, 0, null);
 	}
-
+	
 	public Planet(Long diameter, Integer temperatureMin,
 			Integer temperatureAverage, Position position) {
 		this.diameter = diameter;
