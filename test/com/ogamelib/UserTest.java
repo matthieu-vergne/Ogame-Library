@@ -74,7 +74,7 @@ public class UserTest {
 		{
 			Planet planet = new Planet();
 			planet.setName("Pythagore");
-			planet.setDiameter(500000L);
+			planet.setDiameter(500000);
 			planet.setPosition(new Position(3, 45, 7));
 			planet.setTemperatureAverage(40);
 			planet.setTemperatureMin(-10);
@@ -92,7 +92,7 @@ public class UserTest {
 		{
 			Planet planet = new Planet();
 			planet.setName("Al-Kashi");
-			planet.setDiameter(50000L);
+			planet.setDiameter(50000);
 			planet.setPosition(new Position(2, 54, 1));
 			planet.setTemperatureAverage(20);
 			planet.setTemperatureMin(-20);

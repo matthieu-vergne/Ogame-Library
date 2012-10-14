@@ -1,7 +1,6 @@
 package com.ogamelib.building;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,8 +13,7 @@ import org.junit.Test;
 
 import com.ogamelib.LeveledElement;
 import com.ogamelib.LeveledElementTest;
-import com.ogamelib.Planet;
-import com.ogamelib.building.Building;
+import com.ogamelib.OgameUtil;
 
 public abstract class BuildingTest extends LeveledElementTest {
 
@@ -32,7 +30,7 @@ public abstract class BuildingTest extends LeveledElementTest {
 		file.deleteOnExit();
 		Building building = createBuilding();
 		if (building.getPlanet() == null) {
-			building.setPlanet(new Planet());
+			building.setPlanet(OgameUtil.getInstance().makeRandomPlanet());
 		}
 		
 		try {

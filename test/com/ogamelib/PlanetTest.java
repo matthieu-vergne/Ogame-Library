@@ -62,7 +62,7 @@ public class PlanetTest {
 		//file.deleteOnExit();
 		Planet planet = new Planet();
 		planet.setName("Pythagore");
-		planet.setDiameter(50000L);
+		planet.setDiameter(50000);
 		planet.setPosition(new Position(2, 54, 1));
 		planet.setTemperatureAverage(20);
 		planet.setTemperatureMin(-20);

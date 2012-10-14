@@ -1,7 +1,6 @@
 package com.ogamelib.building.producer;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,13 +15,12 @@ import com.ogamelib.Planet;
 import com.ogamelib.Position;
 import com.ogamelib.building.Building;
 import com.ogamelib.building.BuildingTest;
-import com.ogamelib.building.producer.Producer;
 import com.ogamelib.resource.IProducerTest;
 
 public abstract class ProducerTest extends BuildingTest {
 
 	abstract public Producer createProducer();
-	
+
 	class IProducer extends IProducerTest {
 		@Override
 		public com.ogamelib.resource.IProducer createIProducer() {
@@ -62,19 +60,19 @@ public abstract class ProducerTest extends BuildingTest {
 		assertEquals(producer.getMaximumProductionRate(),
 				(double) producer.getActualProductionRate(), 0);
 	}
-	
+
 	@Test
 	public void testIProducerConstraints() {
 		// TODO add the tests of the IProducer interface
 	}
-	
+
 	@Test
 	public void testPersistence() {
 		File file = new File("producer");
 		file.deleteOnExit();
 		Producer producer = createProducer();
-		producer.setPlanet(new Planet(15000L, -30, 12, new Position(5, 21, 3)));
-		
+		producer.setPlanet(new Planet(15000, -30, 12, new Position(5, 21, 3)));
+
 		try {
 			FileOutputStream fos = new FileOutputStream(file);
 			ObjectOutputStream out = new ObjectOutputStream(fos);
@@ -83,9 +81,9 @@ public abstract class ProducerTest extends BuildingTest {
 		} catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
-		
+
 		Producer producer2 = null;
-		
+
 		try {
 			FileInputStream fis = new FileInputStream(file);
 			ObjectInputStream in = new ObjectInputStream(fis);
@@ -95,12 +93,14 @@ public abstract class ProducerTest extends BuildingTest {
 			throw new RuntimeException(ex);
 		}
 		file.delete();
-		
+
 		assertNotNull(producer2);
 		assertEquals(producer.getActualEnergy(), producer2.getActualEnergy());
-		assertEquals(producer.getActualProductionRate(), producer2.getActualProductionRate());
+		assertEquals(producer.getActualProductionRate(),
+				producer2.getActualProductionRate());
 		assertEquals(producer.getLevel(), producer2.getLevel());
 		assertNotNull(producer2.getPlanet());
-		assertEquals(producer.getPlanet().getPosition(), producer2.getPlanet().getPosition());
+		assertEquals(producer.getPlanet().getPosition(), producer2.getPlanet()
+				.getPosition());
 	}
 }

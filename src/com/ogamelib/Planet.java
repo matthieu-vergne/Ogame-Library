@@ -24,10 +24,10 @@ import com.ogamelib.technology.TechnologySet;
 public class Planet implements Externalizable {
 
 	public Planet() {
-		this(0L, 0, 0, null);
+		this(null, null, null, null);
 	}
-	
-	public Planet(Long diameter, Integer temperatureMin,
+
+	public Planet(Integer diameter, Integer temperatureMin,
 			Integer temperatureAverage, Position position) {
 		this.diameter = diameter;
 		this.temperatureMin = temperatureMin;
@@ -115,13 +115,13 @@ public class Planet implements Externalizable {
 		return owner;
 	}
 
-	private Long diameter;
+	private Integer diameter;
 
-	public void setDiameter(Long diameter) {
+	public void setDiameter(Integer diameter) {
 		this.diameter = diameter;
 	}
 
-	public Long getDiameter() {
+	public Integer getDiameter() {
 		return diameter;
 	}
 
@@ -180,7 +180,7 @@ public class Planet implements Externalizable {
 
 	@Override
 	public void writeExternal(ObjectOutput out) throws IOException {
-		out.writeLong(diameter);
+		out.writeInt(diameter);
 		out.writeInt(temperatureMin);
 		out.writeInt(temperatureAverage);
 		out.writeObject(position);
@@ -198,7 +198,7 @@ public class Planet implements Externalizable {
 	@Override
 	public void readExternal(ObjectInput in) throws IOException,
 			ClassNotFoundException {
-		diameter = in.readLong();
+		diameter = in.readInt();
 		temperatureMin = in.readInt();
 		temperatureAverage = in.readInt();
 		position = (Position) in.readObject();
