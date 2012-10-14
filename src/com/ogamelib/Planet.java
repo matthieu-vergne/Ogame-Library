@@ -212,4 +212,9 @@ public class Planet implements Externalizable {
 		buildings = (BuildingSet) in.readObject();
 		technologies = (TechnologySet) in.readObject();
 	}
+
+	@Override
+	public String toString() {
+		return getName() + " " + getPosition();
+	}
 }
