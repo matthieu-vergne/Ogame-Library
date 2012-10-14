@@ -1,3 +1,5 @@
-bin/
-save/
-*~
+.classpath
+.project
+.settings
+target
+
