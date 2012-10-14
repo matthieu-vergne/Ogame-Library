@@ -1,7 +1,9 @@
 package com.ogamelib;
 
-public class OgameData {
+import java.util.Random;
 
+// TODO check all classes to extract data and functions
+public class OgameData {
 	private final String universe;
 
 	public OgameData(String universe) {
@@ -90,4 +92,63 @@ public class OgameData {
 		}
 	}
 
+	public PlanetSizeComputer getPlanetSizeComputer() {
+		if (universe.equals("65")) {
+			return new PlanetSizeComputer() {
+				private final Random rand = new Random();
+
+				@Override
+				public int compute(int rank) {
+					double min = getPlanetSizeMin(rank);
+					double max = getPlanetSizeMax(rank);
+
+					// FIXME should not be linear
+					double a = (max - min) / 0.8;
+					double b = min - a * 0.1;
+					double x = rand.nextDouble();
+					int size = (int) Math.floor(a * x + b);
+					return size;
+				}
+			};
+		} else {
+			throw new IllegalStateException("No data for the universe "
+					+ universe);
+		}
+	}
+
+	public static interface PlanetSizeComputer {
+		public int compute(int rank);
+	}
+
+	/**
+	 * 
+	 * @param rank
+	 * @return An array of temperatures (minimum, average)
+	 */
+	public TemperatureComputer getTemperatureComputer() {
+		if (universe.equals("65")) {
+			return new TemperatureComputer() {
+				private final Random rand = new Random();
+
+				@Override
+				public int[] compute(int rank) {
+					// FIXME test with reliable data
+					int maxAverage = getMaxTemperaturesAverage(rank);
+					int minAverage = maxAverage - 70;
+					int maxTemp = maxAverage + rand.nextInt(20) - 10;
+					int minTemp = minAverage + rand.nextInt(20) - 10;
+					int[] temperature = new int[] { minTemp,
+							(minTemp + maxTemp) / 2 };
+					return temperature;
+				}
+			};
+		} else {
+			throw new IllegalStateException("No data for the universe "
+					+ universe);
+		}
+	}
+
+	public static interface TemperatureComputer {
+		public int[] compute(int rank);
+	}
 }
