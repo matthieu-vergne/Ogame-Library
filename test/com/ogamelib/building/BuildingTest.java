@@ -13,6 +13,7 @@ import org.junit.Test;
 
 import com.ogamelib.LeveledElement;
 import com.ogamelib.LeveledElementTest;
+import com.ogamelib.OgameData;
 import com.ogamelib.OgameUtil;
 
 public abstract class BuildingTest extends LeveledElementTest {
@@ -30,7 +31,7 @@ public abstract class BuildingTest extends LeveledElementTest {
 		file.deleteOnExit();
 		Building building = createBuilding();
 		if (building.getPlanet() == null) {
-			building.setPlanet(OgameUtil.getInstance().makeRandomPlanet());
+			building.setPlanet(new OgameUtil(new OgameData("65")).makeRandomPlanet());
 		}
 		
 		try {
